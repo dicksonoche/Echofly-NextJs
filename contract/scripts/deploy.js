@@ -1,20 +1,21 @@
-const { ethers } = require("hardhat");
-
+const {ethers} = require('hardhat')
 async function main() {
-  const [deployer] = await ethers.getSigners();
-
+  const [deployer] = await ethers.getSigners(); // Get the deployer's wallet address
   console.log("Deploying contracts with the account:", deployer.address);
-  console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const SocialNetwork = await ethers.getContractFactory("SocialNetwork");
-  const socialNetwork = await SocialNetwork.deploy();
+  // Get the contract factory for DrugBatch
+  const sn = await ethers.getContractFactory("SocialNetwork");
+  // Deploy the contract
+  const sN = await sn.deploy();
+  await sN.deployed(); // Wait for the deployment to complete
 
-  console.log("SocialNetwork deployed to:", socialNetwork.address);
+  console.log("SocialNetwork contract deployed to:", sN.address); // Log the contract address
 }
 
+// Run the main function and handle any errors
 main()
-  .then(() => process.exit(0))
+  .then(() => process.exit(0)) // Exit the process if successful
   .catch((error) => {
-    console.error(error);
-    process.exit(1);
+    console.error(error); // Log any errors
+    process.exit(1); // Exit the process with an error code
   });
