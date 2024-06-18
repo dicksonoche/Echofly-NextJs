@@ -1,18 +1,18 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\Agboola Olamidipupo\\Social-App\\contract\\contracts\\SocialNetwork.sol": {
-      "lastModificationDate": 1718300042754,
-      "contentHash": "3d5c5dc184fe67565f7dbdfc0ee546ce",
+    "/Users/estherliadi/Desktop/social-app/contract/contracts/SocialNetwork.sol": {
+      "lastModificationDate": 1718741344045,
+      "contentHash": "b4a17fcf93a9d44dd223158e7fc55b5c",
       "sourceName": "contracts/SocialNetwork.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -33,24 +33,24 @@
         "@openzeppelin/contracts/access/Ownable.sol"
       ],
       "versionPragmas": [
-        "^0.8.20"
+        "^0.8.6"
       ],
       "artifacts": [
         "SocialNetwork"
       ]
     },
-    "C:\\Users\\Agboola Olamidipupo\\Social-App\\contract\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
-      "lastModificationDate": 1718300048280,
-      "contentHash": "f665fc4a91af3170f86727fc49cc091f",
+    "/Users/estherliadi/Desktop/social-app/contract/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1718284503828,
+      "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -77,18 +77,18 @@
         "Ownable"
       ]
     },
-    "C:\\Users\\Agboola Olamidipupo\\Social-App\\contract\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1718300048658,
-      "contentHash": "2783b901218e982baedae531a748ed8d",
+    "/Users/estherliadi/Desktop/social-app/contract/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1718284503515,
+      "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
         "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
