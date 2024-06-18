@@ -1,10 +1,11 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomicfoundation/hardhat-verify");
 
 module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.8.20", // Add the version 0.8.20
+        version: "0.8.20",
         settings: {
           optimizer: {
             enabled: true,
@@ -40,5 +41,10 @@ module.exports = {
           "d17533e7ae67bfc4331bdba4de18dc48ca9568333d3d6566fcc793af7fec2682",
       ],
     },
+  },
+  etherscan: {
+    apiKey:
+      process.env.ETHERSCAN_API_KEY ||
+      "0x5FbDB2315678afecb367f032d93F642f64180aa3", // Add your Etherscan API key here
   },
 };
