@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/estherliadi/Desktop/social-app/contract/contracts/SocialNetwork.sol": {
-      "lastModificationDate": 1718741344045,
-      "contentHash": "b4a17fcf93a9d44dd223158e7fc55b5c",
+      "lastModificationDate": 1718751818450,
+      "contentHash": "2b32090f7a5e5fb0fcd5dd709094f29a",
       "sourceName": "contracts/SocialNetwork.sol",
       "solcConfig": {
         "version": "0.8.20",
