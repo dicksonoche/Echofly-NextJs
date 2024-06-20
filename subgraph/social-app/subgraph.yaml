@@ -1,0 +1,45 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SocialApp
+    network: sepolia
+    source:
+      address: "0x46B247D4AE99315A84a5A1e30a4744c3dF4b1b3e"
+      abi: SocialApp
+      startBlock: 6149431
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EtherWithdrawn
+        - OwnershipTransferred
+        - PlatformMessageUpdated
+        - PostCommented
+        - PostLiked
+        - UserFollowed
+        - UserPostCreated
+        - UserProfileCreated
+      abis:
+        - name: SocialApp
+          file: ./abis/SocialApp.json
+      eventHandlers:
+        - event: EtherWithdrawn(indexed address,uint256,uint256)
+          handler: handleEtherWithdrawn
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PlatformMessageUpdated(indexed address,string,bool,uint256,uint256)
+          handler: handlePlatformMessageUpdated
+        - event: PostCommented(indexed address,uint256,string,uint256)
+          handler: handlePostCommented
+        - event: PostLiked(indexed address,uint256,uint256)
+          handler: handlePostLiked
+        - event: UserFollowed(indexed address,indexed address,uint256)
+          handler: handleUserFollowed
+        - event: UserPostCreated(indexed address,string,uint256)
+          handler: handleUserPostCreated
+        - event: UserProfileCreated(indexed address,string,string,string,uint256)
+          handler: handleUserProfileCreated
+      file: ./src/social-app.ts

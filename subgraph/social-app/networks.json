@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "SocialApp": {
+      "address": "0x46B247D4AE99315A84a5A1e30a4744c3dF4b1b3e",
+      "startBlock": 6149431
+    }
+  }
+}

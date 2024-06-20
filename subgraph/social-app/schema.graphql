@@ -1,0 +1,83 @@
+type EtherWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  amount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlatformMessageUpdated @entity(immutable: true) {
+  id: Bytes!
+  updater: Bytes! # address
+  newMessage: String! # string
+  premiumUser: Boolean! # bool
+  value: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostCommented @entity(immutable: true) {
+  id: Bytes!
+  userAddress: Bytes! # address
+  postId: BigInt! # uint256
+  content: String! # string
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PostLiked @entity(immutable: true) {
+  id: Bytes!
+  userAddress: Bytes! # address
+  postId: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserFollowed @entity(immutable: true) {
+  id: Bytes!
+  follower: Bytes! # address
+  followee: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserPostCreated @entity(immutable: true) {
+  id: Bytes!
+  userAddress: Bytes! # address
+  content: String! # string
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserProfileCreated @entity(immutable: true) {
+  id: Bytes!
+  userAddress: Bytes! # address
+  username: String! # string
+  bio: String! # string
+  avatarUrl: String! # string
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
