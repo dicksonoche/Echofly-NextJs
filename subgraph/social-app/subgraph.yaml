@@ -15,7 +15,6 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - EtherWithdrawn
-        - OwnershipTransferred
         - PlatformMessageUpdated
         - PostCommented
         - PostLiked
@@ -28,8 +27,6 @@ dataSources:
       eventHandlers:
         - event: EtherWithdrawn(indexed address,uint256,uint256)
           handler: handleEtherWithdrawn
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: PlatformMessageUpdated(indexed address,string,bool,uint256,uint256)
           handler: handlePlatformMessageUpdated
         - event: PostCommented(indexed address,uint256,string,uint256)
