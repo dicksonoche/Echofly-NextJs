@@ -1,0 +1,47 @@
+
+ÉÁdataSources:
+  - kind: ethereum
+    mapping:
+      abis:
+        - file:
+            /: /ipfs/QmZRZQrS37sCXoFme1V4TaDoQ1JR2eCwzMZbxmizDvB3mC
+          name: SocialApp
+      apiVersion: 0.0.7
+      entities:
+        - EtherWithdrawn
+        - PlatformMessageUpdated
+        - PostCommented
+        - PostLiked
+        - UserFollowed
+        - UserPostCreated
+        - UserProfileCreated
+      eventHandlers:
+        - event: 'EtherWithdrawn(indexed address,uint256,uint256)'
+          handler: handleEtherWithdrawn
+        - event: 'PlatformMessageUpdated(indexed address,string,bool,uint256,uint256)'
+          handler: handlePlatformMessageUpdated
+        - event: 'PostCommented(indexed address,uint256,string,uint256)'
+          handler: handlePostCommented
+        - event: 'PostLiked(indexed address,uint256,uint256)'
+          handler: handlePostLiked
+        - event: 'UserFollowed(indexed address,indexed address,uint256)'
+          handler: handleUserFollowed
+        - event: 'UserPostCreated(indexed address,string,uint256)'
+          handler: handleUserPostCreated
+        - event: 'UserProfileCreated(indexed address,string,string,string,uint256)'
+          handler: handleUserProfileCreated
+      file:
+        /: /ipfs/QmYU4thhKFepd62hJ5gsvUNCmGHTveshYPZEL5BVSkBgiD
+      kind: ethereum/events
+      language: wasm/assemblyscript
+    name: SocialApp
+    network: sepolia
+    source:
+      abi: SocialApp
+      address: '0x46B247D4AE99315A84a5A1e30a4744c3dF4b1b3e'
+      startBlock: 6149431
+schema:
+  file:
+    /: /ipfs/QmYGqbmMw6vHpkE21uGqUWCSWZ5851nHJ2vaVpRG2UhAEB
+specVersion: 0.0.4
+Á

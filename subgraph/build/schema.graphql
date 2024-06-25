@@ -1,0 +1,91 @@
+type User @entity {
+  id: ID! # Unique identifier
+  userAddress: Bytes! # Address of the user
+  username: String # optional for profiles
+  bio: String # optional for profiles
+  avatarUrl: String # optional for profiles
+  createdAt: BigInt # optional for profiles
+  followersCount: BigInt # optional for profiles
+  followingCount: BigInt # optional for profiles
+  followers: [UserFollow!]! @derivedFrom(field: "followee")
+  following: [UserFollow!]! @derivedFrom(field: "follower")
+  withdrawals: [EtherWithdrawn!]! @derivedFrom(field: "owner")
+  messagesUpdated: [PlatformMessageUpdated!]! @derivedFrom(field: "updater")
+  comments: [PostCommented!]! @derivedFrom(field: "user")
+  likes: [PostLiked!]! @derivedFrom(field: "user")
+  posts: [UserPostCreated!]! @derivedFrom(field: "user")
+  profiles: [UserProfileCreated!]! @derivedFrom(field: "user")
+}
+
+type Post @entity {
+  id: ID! # Unique identifier
+  postId: BigInt! # Post ID
+  user: User!
+  content: String!
+  likesCount: BigInt!
+  createdAt: BigInt!
+  comments: [PostCommented!]! @derivedFrom(field: "post")
+  likes: [PostLiked!]! @derivedFrom(field: "post")
+}
+
+type EtherWithdrawn @entity {
+  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
+  owner: User! # Reference to the User entity
+  amount: BigInt!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes! # Reference to the transaction hash
+}
+
+type PlatformMessageUpdated @entity {
+  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
+  updater: User! # Reference to the User entity
+  newMessage: String!
+  premiumUser: Boolean!
+  value: BigInt!
+  timestamp: BigInt!
+}
+
+type PostCommented @entity {
+  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
+  user: User! # Reference to the User entity
+  post: Post! # Reference to the Post entity
+  content: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type PostLiked @entity {
+  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
+  user: User! # Reference to the User entity
+  post: Post! # Reference to the Post entity
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type UserPostCreated @entity {
+  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
+  user: User! # Reference to the User entity
+  content: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type UserProfileCreated @entity {
+  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
+  user: User! # Reference to the User entity
+  username: String!
+  bio: String!
+  avatarUrl: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes! # Reference to the transaction hash
+}
+
+type UserFollow @entity {
+  id: ID! # Unique identifier (concatenation of follower and followee addresses)
+  follower: User! # Reference to the User entity
+  followee: User! # Reference to the User entity
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
