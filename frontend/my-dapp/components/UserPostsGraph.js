@@ -1,5 +1,3 @@
-import { gql } from "@apollo/client";
-
 import { useQuery } from "@apollo/client";
 import { GET_USER_POSTS_OVER_TIME } from "../queries/userQueries";
 import { Line } from "react-chartjs-2";
@@ -11,7 +9,7 @@ function UserPostsGraph({ userId, startDate, endDate }) {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
+  s;
   // Prepare data for Chart.js
   const chartData = {
     labels: data.userPostsCreateds.map((post) =>
