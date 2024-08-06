@@ -11,7 +11,10 @@ const fontSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Demo name",
+  title: {
+    template: "%s | social app",
+    default: "social app"
+  },
   description: "A decentralized social app",
 };
 
