@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GET_USER_POSTS_OVER_TIME } from "../queries/userQueries";
+import { GET_USER_POSTS_OVER_TIME } from "../../queries/userQueries";
 import { Line } from "react-chartjs-2";
 
 function UserPostsGraph({ userId, startDate, endDate }) {

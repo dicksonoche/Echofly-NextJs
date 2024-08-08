@@ -9,8 +9,8 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "../ui/form"
-import { Input } from "../ui/input"
+} from "./form"
+import { Input } from "./input"
 import { Control } from 'react-hook-form'
 import { FormFieldType } from '../forms/UserForm'
 import Image from 'next/image'
