@@ -1,12 +1,14 @@
-import Link from "next/link";
-import UserSignUpForm from "./(auth)/forms/UserSignUpForm";
-import { Button } from "../components/ui/button";
+import UserLoginForm from "@/app/(auth)/forms/UserLoginForm";
 import Image from "next/image";
+import { Metadata } from "next";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Login",
+};
+
+const Page = () => {
   return (
     <div className="flex h-screen max-h-screen">
-      {/* TODO: OTP verification */}
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w[496px]">
           <Image
@@ -16,17 +18,16 @@ export default function Home() {
             alt="user"
             className="mb-12 h-12 w-fit"
           />
-          <UserSignUpForm />
+          <UserLoginForm />
           <div className="text-14-regular mt-20 flex justify-between">
-            <p className="justify-items-end text-dark-600 xl:text-left">
+            <p className="text-dark-600 justify-items-end xl:text-left">
               © 2024 My dApp
             </p>
-            <Link href="/?admin=true" className="text-green-500"/>
           </div>
         </div>
       </section>
 
-      <Image 
+      <Image
         src="/assets/images/bg-image.jpg"
         height={1000}
         width={1000}
@@ -35,4 +36,6 @@ export default function Home() {
       />
     </div>
   );
-}
+};
+
+export default Page;
