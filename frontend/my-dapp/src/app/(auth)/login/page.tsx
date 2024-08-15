@@ -16,7 +16,7 @@ const Page = () => {
             height={1000}
             width={1000}
             alt="user"
-            className="mb-12 h-12 w-fit"
+            className="h-12 w-fit"
           />
           <UserLoginForm />
           <div className="text-14-regular mt-20 flex justify-between">
