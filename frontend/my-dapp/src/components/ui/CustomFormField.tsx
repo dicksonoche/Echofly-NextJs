@@ -13,7 +13,7 @@ import {
 import { Input } from "./input";
 import { PasswordInput } from "../PasswordInput";
 import { Control } from "react-hook-form";
-import { FormFieldType } from "../../app/(auth)/forms/UserSignUpForm";
+import { FormFieldType } from "@/app/(auth)/forms/UserSignUpForm";
 import Image from "next/image";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";

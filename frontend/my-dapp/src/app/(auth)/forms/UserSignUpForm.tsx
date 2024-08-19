@@ -2,11 +2,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "../../../components/ui/form";
-import CustomFormField from "../../../components/ui/CustomFormField";
-import SubmitButton from "../../../components/ui/SubmitButton";
+import { Form } from "@/components/ui/form";
+import CustomFormField from "@/components/ui/CustomFormField";
+import SubmitButton from "@/components/ui/SubmitButton";
 import { useState, useTransition } from "react";
-import { signUpSchema, SignUpValues } from "../../../lib/validation";
+import { signUpSchema, SignUpValues } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signUp } from "../signup/actions";
