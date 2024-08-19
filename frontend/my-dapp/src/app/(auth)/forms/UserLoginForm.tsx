@@ -2,14 +2,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "../../../components/ui/form";
-import CustomFormField from "../../../components/ui/CustomFormField";
-import SubmitButton from "../../../components/ui/SubmitButton";
+import { Form } from "@/components/ui/form";
+import CustomFormField from "@/components/ui/CustomFormField";
+import SubmitButton from "@/components/ui/SubmitButton";
 import { useState, useTransition } from "react";
-import { loginSchema, LoginValues } from "../../../lib/validation";
+import { loginSchema, LoginValues } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Login } from "../login/actions";
+import { Login } from "@/app/(auth)/login/actions";
 import LoadingButton from "@/components/LoadingButton";
 
 export enum FormFieldType {

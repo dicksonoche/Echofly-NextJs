@@ -1,6 +1,6 @@
+import UserButton from "@/components/UserButton";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Navbar = () => {
   return (
@@ -15,6 +15,7 @@ const Navbar = () => {
             className="h-12 w-fit"
           />
         </Link>
+        <UserButton />
       </div>
     </div>
   );

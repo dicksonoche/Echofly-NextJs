@@ -1,10 +1,10 @@
 "use server";
 
 import { generateIdFromEntropySize } from "lucia";
-import { signUpSchema, SignUpValues } from "../../../lib/validation";
+import { signUpSchema, SignUpValues } from "@/lib/validation";
 import { hash } from "@node-rs/argon2";
-import prisma from "../../../lib/prisma";
-import { lucia } from "../../../auth";
+import prisma from "@/lib/prisma";
+import { lucia } from "@/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { isRedirectError } from "next/dist/client/components/redirect";

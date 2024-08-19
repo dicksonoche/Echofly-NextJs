@@ -1,10 +1,10 @@
 "use server";
 
 import { isRedirectError } from "next/dist/client/components/redirect";
-import { loginSchema, LoginValues } from "../../../lib/validation";
-import prisma from "../../../lib/prisma";
+import { loginSchema, LoginValues } from "@/lib/validation";
+import prisma from "@/lib/prisma";
 import { verify } from "@node-rs/argon2";
-import { lucia } from "../../../auth";
+import { lucia } from "@/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
