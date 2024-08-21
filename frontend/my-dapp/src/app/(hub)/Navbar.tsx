@@ -16,7 +16,7 @@ const Navbar = () => {
             className="h-12 w-fit"
           />
         </Link>
-        <p className="text-primary text-2xl font-bold">Social Media App</p>
+        <p className="text- text-1xl font-medium">Social Media App</p>
         <SearchField />
         <UserButton className="sm:ms-auto" />
       </div>
