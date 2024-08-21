@@ -1,3 +1,4 @@
+import SearchField from "@/components/SearchField";
 import UserButton from "@/components/UserButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +16,9 @@ const Navbar = () => {
             className="h-12 w-fit"
           />
         </Link>
-        <UserButton />
+        <p className="text-primary text-2xl font-bold">Social Media App</p>
+        <SearchField />
+        <UserButton className="sm:ms-auto" />
       </div>
     </div>
   );
