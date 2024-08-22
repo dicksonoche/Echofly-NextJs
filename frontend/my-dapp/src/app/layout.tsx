@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from '../lib/utils'
 import { ThemeProvider } from "../components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <Toaster />
         </body>
     </html>
   );

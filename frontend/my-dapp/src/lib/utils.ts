@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { formatDate, formatDistanceToNowStrict } from "date-fns";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -42,22 +43,22 @@ export const formatDateTime = (dateString: Date | string) => {
 
   const formattedDateTime: string = new Date(dateString).toLocaleString(
     "en-US",
-    dateTimeOptions
+    dateTimeOptions,
   );
 
   const formattedDateDay: string = new Date(dateString).toLocaleString(
     "en-US",
-    dateDayOptions
+    dateDayOptions,
   );
 
   const formattedDate: string = new Date(dateString).toLocaleString(
     "en-US",
-    dateOptions
+    dateOptions,
   );
 
   const formattedTime: string = new Date(dateString).toLocaleString(
     "en-US",
-    timeOptions
+    timeOptions,
   );
 
   return {
@@ -74,4 +75,24 @@ export function encryptKey(passkey: string) {
 
 export function decryptKey(passkey: string) {
   return atob(passkey);
+}
+
+// FORMAT RELATIVE DATE
+export function formatRelativeDate(from: Date) {
+  const currentDate = new Date();
+  // If the post was made in the last 24 hours(convert it to milliseconds), show the relative date
+  if (currentDate.getTime() - from.getTime() < 24 * 60 * 60 * 1000) {
+    return formatDistanceToNowStrict(from, { addSuffix: true }); //Suffix is the text that signifies "3 mins ago, etc"
+  }
+  // "else statement" is if the post is older than 24 hours
+  else {
+    // If post is up to a year
+    if (currentDate.getFullYear() === from.getFullYear()) {
+      return formatDate(from, "d MMM");
+    }
+    // "else statement" If post is older than 1 year
+    else {
+      return formatDate(from, "d MMM, yyyy");
+    }
+  }
 }
