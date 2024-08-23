@@ -1,5 +1,6 @@
 import CreatePost from "@/components/posts/editor/CreatePost";
 import Post from "@/components/posts/Post";
+import RightSideBar from "@/components/RightSideBar";
 import prisma from "@/lib/prisma";
 import { postPayloadInclude } from "@/lib/types";
 
@@ -10,13 +11,14 @@ export default async function Home() {
   });
 
   return (
-    <div className="w-full min-w-0">
+    <div className="w-full min-w-0 flex gap-5">
       <div className="w-full min-w-0 space-y-5">
         <CreatePost />
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
       </div>
+      <RightSideBar />
     </div>
   );
 }

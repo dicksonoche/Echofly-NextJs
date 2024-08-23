@@ -96,3 +96,11 @@ export function formatRelativeDate(from: Date) {
     }
   }
 }
+
+//Takes the number as input and returns a formatted string
+export function formatNumber(n: number): string {
+  return Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumSignificantDigits: 1,
+  }).format(n);
+}

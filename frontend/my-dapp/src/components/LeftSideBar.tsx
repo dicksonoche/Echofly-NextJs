@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Bell, Bookmark, Home, Mail } from "lucide-react";
 import Link from "next/link";
 
-interface SideBarProps {
+interface LeftSideBarProps {
   className?: string;
 }
 
-const SideBar = ({ className }: SideBarProps) => {
+const LeftSideBar = ({ className }: LeftSideBarProps) => {
   return (
     <div className={className}>
       <Button
@@ -57,4 +57,4 @@ const SideBar = ({ className }: SideBarProps) => {
   );
 };
 
-export default SideBar;
+export default LeftSideBar;
