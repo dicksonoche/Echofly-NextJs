@@ -2,7 +2,7 @@ import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";
 import SessionProvider from "./SessionProvider";
 import Navbar from "./Navbar";
-import SideBar from "./SideBar";
+import LeftSideBar from "@/components/LeftSideBar";
 
 //async to monitor the current user session
 export default async function Layout({
@@ -19,10 +19,10 @@ export default async function Layout({
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <div className="mx-auto flex w-full max-w-7xl grow gap-5 p-5">
-          <SideBar className="bg-card sticky top-[5rem] hidden h-fit flex-none space-y-3 rounded-2xl px-3 py-5 shadow-sm sm:block lg:px-5 xl:w-80" />
+          <LeftSideBar className="bg-card sticky top-[5rem] hidden h-fit flex-none space-y-3 rounded-2xl px-3 py-5 shadow-sm sm:block lg:px-5 xl:w-80" />
           {children}
         </div>
-        <SideBar className="bg-card sticky bottom-0 flex w-full justify-center gap-5 border-t p-3 sm:hidden" />
+        <LeftSideBar className="bg-card sticky bottom-0 flex w-full justify-center gap-5 border-t p-3 sm:hidden" />
       </div>
     </SessionProvider>
   );
