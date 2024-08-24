@@ -19,6 +19,7 @@ import { Check, LogOutIcon, Monitor, Moon, Sun, UserIcon } from "lucide-react";
 import { logout } from "@/app/(auth)/actions";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface UserButtonProps {
   className?: string;
@@ -28,6 +29,9 @@ const UserButton = ({ className }: UserButtonProps) => {
   const { user } = useSession(); //Containing the user and the sessio9n both guaranteed to not be null. A client component, so we can't call validate request
 
   const { theme, setTheme } = useTheme();
+
+  //To clear the use cache on logout
+  const queryClient = useQueryClient();
 
   return (
     <DropdownMenu>
@@ -73,6 +77,7 @@ const UserButton = ({ className }: UserButtonProps) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
+            queryClient.clear()
             logout();
           }}
         >
