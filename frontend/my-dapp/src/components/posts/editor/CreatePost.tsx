@@ -7,11 +7,15 @@ import { createPost } from "./actions";
 import UserAvatar from "@/components/UserAvatar";
 import { useSession } from "@/app/(hub)/SessionProvider";
 import { Button } from "@/components/ui/button";
-import "./styles.css"
+import "./styles.css";
+import { useSubmitPostMutation } from "./mutations";
+import LoadingButton from "@/components/LoadingButton";
 
 const CreatePost = () => {
   //To accessm the already logged in user
   const { user } = useSession();
+
+  const mutation = useSubmitPostMutation();
 
   const editor = useEditor({
     extensions: [
@@ -30,9 +34,13 @@ const CreatePost = () => {
       blockSeparator: "\n",
     }) || "";
 
-  async function onSubmit() {
-    await createPost(input); //he input would the be validated on the backend(actions.ts), and used to create a new post
-    editor?.commands.clearContent();
+  function onSubmit() {
+    mutation.mutate(input, {
+      onSuccess: () => {
+        editor?.commands.clearContent();
+      }, //The input would the be validated on the backend(actions.ts), and used to create a new post
+      //Then, clear the editor
+    });
   }
 
   return (
@@ -48,13 +56,14 @@ const CreatePost = () => {
         />
       </div>
       <div className="flex justify-end">
-        <Button
+        <LoadingButton
           onClick={onSubmit}
+          loading={mutation.isPending}
           disabled={!input.trim()}
           className="min-w-20"
         >
           Post
-        </Button>
+        </LoadingButton>
       </div>
     </div>
   );
