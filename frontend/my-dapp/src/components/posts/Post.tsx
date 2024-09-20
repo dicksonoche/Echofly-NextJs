@@ -1,10 +1,10 @@
-import { postPayload } from "@/lib/types";
+import { PostPayload } from "@/lib/types";
 import Link from "next/link";
 import UserAvatar from "../UserAvatar";
 import { formatRelativeDate } from "@/lib/utils";
 
 interface PostProps {
-  post: postPayload;
+  post: PostPayload;
 }
 
 const Post = ({ post }: PostProps) => {
@@ -25,7 +25,7 @@ const Post = ({ post }: PostProps) => {
             href={`/posts/${post.id}`}
             className="text-muted-foreground block text-sm hover:underline"
           >
-            {/*formatRelativeDate(post.createdAt)*/}
+            {formatRelativeDate(post.createdAt)}
           </Link>
         </div>
       </div>

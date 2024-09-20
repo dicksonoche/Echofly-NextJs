@@ -2,10 +2,15 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { postPayloadInclude } from "@/lib/types";
+import { PostPayloadInclude, PostsPage } from "@/lib/types";
+import { NextRequest } from "next/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
+    const cursor = req.nextUrl.searchParams.get('cursor') || undefined
+
+    const pageSize = 12
+
     const { user } = await validateRequest();
 
     if (!user) {
@@ -14,11 +19,20 @@ export async function GET() {
 
     // In fyp page case, we want to show all posts of all users including ourselves
     const posts = await prisma.post.findMany({
-      include: postPayloadInclude, //To join multiple tables, and select the data we want available on the post
+      include: PostPayloadInclude, //To join multiple tables, and select the data we want available on the post
       orderBy: { createdAt: "desc" },
+      take: pageSize + 1,
+      cursor: cursor ? { id: cursor } : undefined
     });
 
-    return Response.json(posts);
+    const nextCursor = posts.length > pageSize ? posts[pageSize].id : null
+
+    const data: PostsPage = {
+      posts: posts.slice(0, pageSize),
+      nextCursor,
+    }
+
+    return Response.json(data);
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });

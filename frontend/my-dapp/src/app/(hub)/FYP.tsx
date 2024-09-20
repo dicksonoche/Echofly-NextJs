@@ -1,35 +1,60 @@
 "use client";
 
+import InfiniteScroller from "@/components/InfiniteScroller";
 import Post from "@/components/posts/Post";
-import { postPayload } from "@/lib/types";
-import { useQuery } from "@tanstack/react-query";
+import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
+import { Button } from "@/components/ui/button";
+import kyInstance from "@/lib/ky";
+import { PostPayload, PostsPage } from "@/lib/types";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
 const FYP = () => {
   // First, it returns an array of post payloads/data
-  const query = useQuery<postPayload[]>({
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery({
     queryKey: ["post-feed", "for-you"], //Data cache, automatically revalidating it
-    queryFn: async () => {
-      const res = await fetch("/api/posts/user-feed");
-      if (!res.ok) {
-        throw Error(`Request failed with status code ${res.status}`);
-      }
-      return res.json();
-    },
+    queryFn: ({ pageParam }) =>
+      kyInstance
+        .get(
+          "/api/posts/user-feed",
+          pageParam ? { searchParams: { cursor: pageParam } } : {},
+        )
+        .json<PostsPage>(),
+    initialPageParam: null as string | null,
+    getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 
-  if (query.status === "pending") {
-    return <Loader2 className="mx-auto animate-spin" />;
+  const posts = data?.pages.flatMap((page) => page.posts) || [];
+
+  if (status === "pending") {
+    return <PostsLoadingSkeleton />;
   }
 
-  if (query.status === "error") {
+  if (status === "success" && !posts.length && !hasNextPage) {
+    return <p className="text-muted-foreground text-center">No posts yet.</p>;
+  }
+
+  if (status === "error") {
     return <p className="text-destructive text-center">Error loading posts.</p>;
   }
-  return <>
-  {query.data?.map((post) => (
-    <Post key={post.id} post={post} />
-  ))}
-  </>;
+  return (
+    <InfiniteScroller
+      className="space-y-5"
+      onBottomReached={() => hasNextPage && !isFetching && fetchNextPage()}
+    >
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
+      {isFetchingNextPage && <Loader2 className="mx-auto my-3 animate-spin" />}
+    </InfiniteScroller>
+  );
 };
 
 export default FYP;
