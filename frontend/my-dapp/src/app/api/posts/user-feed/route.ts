@@ -2,7 +2,7 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { PostPayloadInclude, PostsPage } from "@/lib/types";
+import { getPostPayloadInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
 
     // In fyp page case, we want to show all posts of all users including ourselves
     const posts = await prisma.post.findMany({
-      include: PostPayloadInclude, //To join multiple tables, and select the data we want available on the post
+      include: getPostPayloadInclude(user.id), //To join multiple tables, and select the data we want available on the post
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,
       cursor: cursor ? { id: cursor } : undefined

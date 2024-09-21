@@ -1,6 +1,6 @@
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { userProjection } from "@/lib/types";
+import { getUserProjection } from "@/lib/types";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -8,6 +8,7 @@ import UserAvatar from "./UserAvatar";
 import { Button } from "./ui/button";
 import { unstable_cache } from "next/cache";
 import { formatNumber } from "@/lib/utils";
+import FollowBtn from "./FollowBtn";
 
 const RightSideBar = () => {
   return (
@@ -32,8 +33,13 @@ async function FollowSuggestion() {
       NOT: {
         id: user?.id,
       },
+      followers: {
+        none: {
+          followerId: user.id,
+        }
+      }
     },
-    select: userProjection,
+    select: getUserProjection(user.id),
     take: 5, //Show a maximum of five users
   });
 
@@ -59,7 +65,15 @@ async function FollowSuggestion() {
                 </p>
               </div>
             </Link>
-            <Button>Follow</Button>
+            <FollowBtn
+              userId={user.id}
+              initialState={{
+                followers: user._count.followers,
+                isFollowedByUser: user.followers.some(
+                  ({ followerId }) => followerId === user.id,
+                ),
+              }}
+            />
           </div>
         ))}
       </div>
