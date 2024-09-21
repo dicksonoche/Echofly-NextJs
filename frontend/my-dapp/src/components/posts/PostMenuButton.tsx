@@ -1,13 +1,10 @@
 import { PostPayload } from "@/lib/types";
 import { useState } from "react";
 import DeletePostPop from "./DeletePostPop";
-import { DropdownMenu, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
 import { MoreHorizontal, Trash2 } from "lucide-react";
-import {
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@radix-ui/react-dropdown-menu";
+
 
 interface PostMenuButtonProps {
   post: PostPayload;

@@ -2,7 +2,7 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { PostPayloadInclude } from "@/lib/types";
+import { getPostPayloadInclude } from "@/lib/types";
 import { createPostSchema } from "@/lib/validation";
 import { revalidatePath } from "next/cache";
 
@@ -17,7 +17,7 @@ export async function createPost(input: string) {
       content,
       userId: user.id,
     },
-    include: PostPayloadInclude,
+    include: getPostPayloadInclude(user.id),
   });
 
   return newPost
