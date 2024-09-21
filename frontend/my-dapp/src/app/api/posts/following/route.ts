@@ -1,5 +1,3 @@
-//A GET request to fetch data, we need to create a route handler
-
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
 import { getPostPayloadInclude, PostsPage } from "@/lib/types";
@@ -7,9 +5,9 @@ import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const cursor = req.nextUrl.searchParams.get('cursor') || undefined
+    const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
 
-    const pageSize = 7
+    const pageSize = 7;
 
     const { user } = await validateRequest();
 
@@ -17,20 +15,28 @@ export async function GET(req: NextRequest) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // In the user feed page case, we want to show all posts of all users including ourselves
+    //Only fetch posts from users where the authenticated user is a follower
     const posts = await prisma.post.findMany({
-      include: getPostPayloadInclude(user.id), //To join multiple tables, and select the data we want available on the post
-      orderBy: { createdAt: "desc" },
+      where: {
+        user: {
+          followers: {
+            some: {
+              followerId: user.id,
+            },
+          },
+        },
+      },
       take: pageSize + 1,
-      cursor: cursor ? { id: cursor } : undefined
+      cursor: cursor ? { id: cursor } : undefined,
+      include: getPostPayloadInclude(user.id),
     });
 
-    const nextCursor = posts.length > pageSize ? posts[pageSize].id : null
+    const nextCursor = posts.length > pageSize ? posts[pageSize].id : null;
 
     const data: PostsPage = {
       posts: posts.slice(0, pageSize),
       nextCursor,
-    }
+    };
 
     return Response.json(data);
   } catch (error) {
