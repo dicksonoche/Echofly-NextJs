@@ -47,7 +47,7 @@ const FollowBtn = ({ userId, initialState }: FollowBtnProps) => {
       console.error(error);
       toast({
         variant: "destructive",
-        description: "Something went wrong. Try again later.",
+        description: "Something went wrong. Please, try again.",
       });
     },
   });
