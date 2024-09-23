@@ -6,6 +6,8 @@ export function getUserProjection(loggedInUserId: string) {
     username: true,
     displayName: true,
     avartarUrl: true,
+    bio: true,
+    createdAt: true,
     followers: {
       where: {
         followerId: loggedInUserId,
@@ -17,10 +19,15 @@ export function getUserProjection(loggedInUserId: string) {
     _count: {
       select: {
         followers: true,
+        posts: true,
       },
     },
   } satisfies Prisma.UserSelect;
 }
+
+export type UserData = Prisma.UserGetPayload<{
+  select: ReturnType<typeof getUserProjection>;
+}>;
 
 export function getPostPayloadInclude(loggedInUserId: string) {
   return {
