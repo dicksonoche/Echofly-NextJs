@@ -7,16 +7,28 @@ import {
 } from "@tanstack/react-query";
 import { createPost } from "./actions";
 import { PostsPage } from "@/lib/types";
+import { useSession } from "@/app/(hub)/SessionProvider";
 
 export function useSubmitPostMutation() {
   const { toast } = useToast();
 
   const queryClient = useQueryClient();
 
+  const { user } = useSession();
+
   const mutation = useMutation({
     mutationFn: createPost,
     onSuccess: async (newPost) => {
-      const queryFilter: QueryFilters = { queryKey: ["post-feed", "for-you"] };
+      const queryFilter = {
+        queryKey: ["post-feed"],
+        predicate(query) {
+          return (
+            query.queryKey.includes("for-you") ||
+            (query.queryKey.includes("user-posts") &&
+              query.queryKey.includes(user.id))
+          );
+        },
+      } satisfies QueryFilters;
 
       //Stop any running queries
       await queryClient.cancelQueries(queryFilter);
@@ -42,11 +54,11 @@ export function useSubmitPostMutation() {
         },
       );
 
-      //If there's a new post(probably by another user) just before the first page loads
+      //If there's a new post(probably by another user, or by main user) just before the first page loads
       queryClient.invalidateQueries({
         queryKey: queryFilter.queryKey,
         predicate(query) {
-          return !query.state.data;
+          return queryFilter.predicate(query) && !query.state.data;
         },
       });
 
