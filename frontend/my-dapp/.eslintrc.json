@@ -1,3 +1,7 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"]
+  "parser": "@babel/eslint-parser",
+  "extends": ["next/core-web-vitals", "prettier"],
+  "parserOptions": {
+    "requireConfigFile": false
+  }
 }
