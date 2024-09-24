@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-        serverActions: true, //Enable server actions
         staleTimes: {
             dynamic: 30//So that the client side router caches pages for 30 seconds
         },
