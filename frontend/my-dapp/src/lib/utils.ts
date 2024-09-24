@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { format, formatDistanceToNowStrict } from "date-fns";
+import { formatDate, formatDistanceToNowStrict } from "date-fns";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -88,11 +88,11 @@ export function formatRelativeDate(from: Date) {
   else {
     // If post is up to a year
     if (currentDate.getFullYear() === from.getFullYear()) {
-      return format(from, "d MMM");
+      return formatDate(from, "d MMM");
     }
     // "else statement" If post is older than 1 year
     else {
-      return format(from, "d MMM, yyyy");
+      return formatDate(from, "d MMM, yyyy");
     }
   }
 }
