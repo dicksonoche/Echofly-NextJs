@@ -6,6 +6,7 @@ import { useToast } from "./ui/use-toast";
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "./ui/button";
 import kyInstance from "@/lib/ky";
+import contractABI from "@/contracts/SocialNetworkABI.json"
 
 interface FollowBtnProps {
   userId: string;
