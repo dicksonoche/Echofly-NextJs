@@ -23,7 +23,7 @@ dataSources:
         - UserProfileCreated
       abis:
         - name: SocialApp
-          file: SocialApp/abis/SocialApp.json
+          file: SocialApp/SocialApp.json
       eventHandlers:
         - event: EtherWithdrawn(indexed address,uint256,uint256)
           handler: handleEtherWithdrawn

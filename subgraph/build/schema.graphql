@@ -1,91 +1,112 @@
 type User @entity {
-  id: ID! # Unique identifier
-  userAddress: Bytes! # Address of the user
-  username: String # optional for profiles
-  bio: String # optional for profiles
-  avatarUrl: String # optional for profiles
-  createdAt: BigInt # optional for profiles
-  followersCount: BigInt # optional for profiles
-  followingCount: BigInt # optional for profiles
-  followers: [UserFollow!]! @derivedFrom(field: "followee")
+  id: ID! # The unique ID for each user (probably their wallet address or another unique identifier)
+  userAddress: Bytes! # The user's address on the blockchain (e.g., Ethereum address)
+  username: String # Optional: User's profile name (if they have one)
+  bio: String # Optional: A short bio the user may add to their profile
+  avatarUrl: String # Optional: Link to the user's profile picture/avatar
+  createdAt: BigInt # Optional: Timestamp for when the user created their profile
+  followersCount: BigInt # Optional: How many followers this user has
+  followingCount: BigInt # Optional: How many users they are following
+
+  # Automatically tracks who is following this user (based on the UserFollow entity)
+  followers: [UserFollow!]! @derivedFrom(field: "followee") 
+
+  # Automatically tracks who this user is following (also based on UserFollow)
   following: [UserFollow!]! @derivedFrom(field: "follower")
+  
+  # Links to the EtherWithdrawn entity, tracking all withdrawals made by this user
   withdrawals: [EtherWithdrawn!]! @derivedFrom(field: "owner")
+ 
+  # Tracks all the platform messages this user has updated
   messagesUpdated: [PlatformMessageUpdated!]! @derivedFrom(field: "updater")
+
+  # Every comment the user has made on posts is linked here
   comments: [PostCommented!]! @derivedFrom(field: "user")
+  
+  # Every post the user has liked is tracked here
   likes: [PostLiked!]! @derivedFrom(field: "user")
+  
+  # Lists all posts created by the user
   posts: [UserPostCreated!]! @derivedFrom(field: "user")
+ 
+  # Tracks profile updates or creations by the user
   profiles: [UserProfileCreated!]! @derivedFrom(field: "user")
+  
 }
 
 type Post @entity {
-  id: ID! # Unique identifier
-  postId: BigInt! # Post ID
-  user: User!
-  content: String!
-  likesCount: BigInt!
-  createdAt: BigInt!
+  id: ID! # Unique ID for the post
+  postId: BigInt! # A separate post ID (could be something like an incrementing post number)
+  user: User! # The user who created the post (a relationship to the User entity)
+  content: String! # The actual content of the post (text, image link, etc.)
+  likesCount: BigInt! # Number of likes the post has received
+  createdAt: BigInt! # Timestamp of when the post was created
+
+  # Lists all comments on the post
   comments: [PostCommented!]! @derivedFrom(field: "post")
+  
+  # Lists all likes on the post
   likes: [PostLiked!]! @derivedFrom(field: "post")
 }
 
 type EtherWithdrawn @entity {
-  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
-  owner: User! # Reference to the User entity
-  amount: BigInt!
-  timestamp: BigInt!
-  blockNumber: BigInt!
-  transactionHash: Bytes! # Reference to the transaction hash
+  id: ID! # Unique ID (maybe generated from transaction hash + log index)
+  owner: User! # The user who withdrew the Ether
+  amount: BigInt! # Amount of Ether withdrawn
+  timestamp: BigInt! # When the withdrawal happened
+  blockNumber: BigInt! # Block number when the transaction was included
+  transactionHash: Bytes! # Hash of the withdrawal transaction
 }
 
 type PlatformMessageUpdated @entity {
-  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
-  updater: User! # Reference to the User entity
-  newMessage: String!
-  premiumUser: Boolean!
-  value: BigInt!
-  timestamp: BigInt!
+  id: ID! # Unique ID (could be based on transaction hash + log index)
+  updater: User! # User who updated the message
+  newMessage: String! # The new content of the message
+  premiumUser: Boolean! # Whether the user has premium status
+  value: BigInt! # Possibly the value of something related to the message (tip, fee, etc.)
+  timestamp: BigInt! # When the message was updated
 }
 
 type PostCommented @entity {
-  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
-  user: User! # Reference to the User entity
-  post: Post! # Reference to the Post entity
-  content: String!
-  timestamp: BigInt!
-  blockNumber: BigInt!
+  id: ID! # Unique ID (transaction hash + log index combo)
+  user: User! # The user who made the comment
+  post: Post! # The post they commented on
+  content: String! # The comment itself
+  timestamp: BigInt! # When the comment was made
+  blockNumber: BigInt! # Block number where the comment transaction was included
 }
 
 type PostLiked @entity {
-  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
-  user: User! # Reference to the User entity
-  post: Post! # Reference to the Post entity
-  timestamp: BigInt!
-  blockNumber: BigInt!
+  id: ID! # Unique ID (transaction hash + log index combo)
+  user: User! # The user who liked the post
+  post: Post! # The post they liked
+  timestamp: BigInt! # When the like was made
+  blockNumber: BigInt! # Block number where the like transaction was included
 }
 
 type UserPostCreated @entity {
-  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
-  user: User! # Reference to the User entity
-  content: String!
-  timestamp: BigInt!
-  blockNumber: BigInt!
+  id: ID! # Unique ID (transaction hash + log index combo)
+  user: User! # The user who created the post
+  content: String! # Content of the post
+  timestamp: BigInt! # When the post was created
+  blockNumber: BigInt! # Block number where the post creation transaction was included
 }
 
 type UserProfileCreated @entity {
-  id: ID! # Unique identifier (concatenation of transaction hash and log index or other unique identifier)
-  user: User! # Reference to the User entity
-  username: String!
-  bio: String!
-  avatarUrl: String!
-  timestamp: BigInt!
-  blockNumber: BigInt!
-  transactionHash: Bytes! # Reference to the transaction hash
+  id: ID! # Unique ID (transaction hash + log index combo)
+  user: User! # The user who created/updated their profile
+  username: String! # Username in the profile
+  bio: String! # Bio in the profile
+  avatarUrl: String! # Profile picture URL
+  timestamp: BigInt! # When the profile was created/updated
+  blockNumber: BigInt! # Block number for the transaction
+  transactionHash: Bytes! # Hash of the profile creation/update transaction
 }
 
 type UserFollow @entity {
-  id: ID! # Unique identifier (concatenation of follower and followee addresses)
-  follower: User! # Reference to the User entity
-  followee: User! # Reference to the User entity
-  timestamp: BigInt!
-  blockNumber: BigInt!
+  id: ID! # Unique ID (combo of follower + followee addresses)
+  follower: User! # The user doing the following
+  followee: User! # The user being followed
+  timestamp: BigInt! # When the follow happened
+  blockNumber: BigInt! # Block number where the follow was recorded
 }
