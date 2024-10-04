@@ -12,5 +12,5 @@ if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
     "https://sepolia.infura.io/v3/45659e58bfd842309ac5e26ecd083106"
   );
 }
-
-export default provider;
+// export a signer
+export  provider;
