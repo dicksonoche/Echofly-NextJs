@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 import { getPostPayloadInclude } from "@/lib/types";
 import { createPostSchema } from "@/lib/validation";
 import { revalidatePath } from "next/cache";
-
+import {contract, contractWithSigner} from "@/lib/ethereum";
 export async function createPost(input: string) {
   const { user } = await validateRequest(); //Check if the user is authenticated
   if (!user) throw Error("Unauthorized");
