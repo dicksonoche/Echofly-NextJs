@@ -25,6 +25,9 @@ module.exports = {
     ],
   },
   networks: {
+    hardhat: {
+      chainId: 31337,
+    },
     "optimism-sepolia": {
       url: "https://sepolia.optimism.io",
       chainId: 11155420,
