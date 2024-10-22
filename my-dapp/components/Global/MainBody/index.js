@@ -4,7 +4,6 @@ import MainStory from "./MainStory";
 import MainCreatePost from "./MainCreatePost";
 import MainMultiPost from "./MainMultiPost";
 import MainTextPost from "./MainTextPost";
-import MainFriendSlider from "./MainFriendSlider";
 import MainVideoPost from "./MainVideoPost";
 import MainFourPost from "./MainFourPost";
 import MainFriendSliderTwo from "./MainFriendSliderTwo";
@@ -27,7 +26,6 @@ export {
   MainCreatePost,
   MainMultiPost,
   MainTextPost,
-  MainFriendSlider,
   MainVideoPost,
   MainFourPost,
   MainFriendSliderTwo,

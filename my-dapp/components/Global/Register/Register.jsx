@@ -18,6 +18,7 @@ const register = ({
 }) => {
   const [formInput, updateFormInput] = useState({
     name: "",
+    email: "",
   });
 
   return (
@@ -40,6 +41,13 @@ const register = ({
                     placeholder={"Your name"}
                     handleClick={(e) =>
                       updateFormInput({ ...formInput, name: e.target.value })
+                    }
+                  />
+                  <Input
+                    Icon={<AiOutlineMail />}
+                    placeholder={"Email Address"}
+                    handleClick={(e) =>
+                      updateFormInput({ ...formInput, email: e.target.value })
                     }
                   />
                   <Input

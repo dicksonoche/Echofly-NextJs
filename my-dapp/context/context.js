@@ -19,7 +19,7 @@ export const SOCAIL_MEDIA_Provider = ({ children }) => {
   const SOCIAL_MEDIA_DAPP = "TBCoders";
   const [loader, setLoader] = useState(false);
   const [openCreatePost, setOpenCreatePost] = useState(false);
-  const [activeComponent, setActiveComponent] = useState("Newsfeed");
+  const [activeComponent, setActiveComponent] = useState("Timeline");
   const [openComment, setOpenComment] = useState(false);
 
   //NOTIFICATION

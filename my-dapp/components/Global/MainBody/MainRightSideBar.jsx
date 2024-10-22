@@ -6,8 +6,6 @@ import { BsBoxArrowUpRight } from "react-icons/bs";
 import { shortenAddress } from "../../../utils/utils";
 import Product from "../../../Ads/product.json";
 import {
-  EventsAds,
-  ProductAds,
   TopProfile,
   Dappusers,
 } from "./index";
@@ -27,10 +25,6 @@ const MainRightSideBar = ({ AppUsers, FOLLOW_USER }) => {
         icon={<AiOutlinePlus />}
         FOLLOW_USER={FOLLOW_USER}
       />
-
-      <ProductAds icon={<BsBoxArrowUpRight />} />
-
-      <EventsAds />
     </div>
   );
 };

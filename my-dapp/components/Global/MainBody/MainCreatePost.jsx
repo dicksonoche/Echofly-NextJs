@@ -38,35 +38,6 @@ const MainCreatePost = ({ setOpenCreatePost }) => {
           placeholder="What's on your mind?"
         ></textarea>
       </div>
-      <div className="card-body d-flex p-0 mt-0">
-        <a
-          href="#"
-          className="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"
-        >
-          <i className="font-md text-danger  me-2">
-            <AiOutlineVideoCameraAdd />
-          </i>
-          <span className="d-none-xs">Live Video</span>
-        </a>
-        <a
-          href="#"
-          className="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"
-        >
-          <i className="font-md text-success  me-2">
-            <HiPhotograph />
-          </i>
-          <span className="d-none-xs">Photo/Video</span>
-        </a>
-        <a
-          href="#"
-          className="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"
-        >
-          <i className="font-md text-warning  me-2">
-            <AiOutlineCamera />
-          </i>
-          <span className="d-none-xs">Feeling/Activity</span>
-        </a>
-      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ const GlobalAppFooter = ({ setActiveComponent }) => {
   return (
     <div className="app-footer border-0 shadow-lg bg-primary-gradiant">
       <a
-        onClick={() => setActiveComponent("Newsfeed")}
+        onClick={() => setActiveComponent("Timeline")}
         className="nav-content-bttn nav-center"
       >
         <i className="">

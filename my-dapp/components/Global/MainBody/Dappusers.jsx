@@ -4,7 +4,7 @@ const Dappusers = ({ FOLLOW_USER, AppUsers, shortenAddress }) => {
   return (
     <div className="card w-100 shadow-xss rounded-xxl border-0 mb-3">
       <div className="card-body d-flex align-items-center p-4">
-        <h4 className="fw-700 mb-0 font-xssss text-grey-900">Dapp Users</h4>
+        <h4 className="fw-700 mb-0 font-xssss text-grey-900">Who to follow</h4>
         <a
           href="default-member.html"
           className="fw-600 ms-auto font-xssss text-primary"

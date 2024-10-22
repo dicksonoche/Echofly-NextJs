@@ -97,7 +97,7 @@ const index = () => {
     if (!router.isReady) return;
 
     if (router.asPath == "/") {
-      setActiveComponent("Newsfeed");
+      setActiveComponent("Timeline");
     } else setActiveComponent(router.asPath.slice(2));
     if (router.query.type) {
       setActiveComponent("");
@@ -186,7 +186,7 @@ const index = () => {
               userAccount={userAccount}
             />
 
-            {activeComponent == "Newsfeed" ? (
+            {activeComponent == "Timeline" ? (
               <MainBody
                 menuPostion={menuPostion}
                 userAddress={userAddress}

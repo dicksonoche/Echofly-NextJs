@@ -7,7 +7,6 @@ import {
   MainCreatePost,
   MainMultiPost,
   MainTextPost,
-  MainFriendSlider,
   MainVideoPost,
   MainFourPost,
   MainFriendSliderTwo,
@@ -94,7 +93,6 @@ const MainBody = ({
                     </>
                   ))
                   .slice(0, 1)}
-                <MainFriendSlider AppUsers={AppUsers} />
                 {/* //POST SECTION  2*/}
                 {displyPosts
                   .map((post, index) => (
