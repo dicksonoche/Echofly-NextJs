@@ -3,7 +3,7 @@ async function main() {
   const [deployer] = await ethers.getSigners(); // Get the deployer's wallet address
   console.log("Deploying contracts with the account:", deployer.address);
 
-  // Get the contract factory for DrugBatch
+  // Get the contract factory for the SocialNetwork
   const sn = await ethers.getContractFactory("SocialNetwork");
   // Deploy the contract
   const sN = await sn.deploy();
