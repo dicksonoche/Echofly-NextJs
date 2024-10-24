@@ -12,23 +12,6 @@ contract SocialNetwork {
     mapping(address => mapping(address => Profile)) internal following;
     mapping(address => Post[]) internal posts;
 
-    //CREATE GROUPS
-    struct Group {
-        address[] members;
-        mapping(uint256 => string) messages;
-        string name;
-        string description;
-        uint256 groupID;
-    }
-
-    mapping(uint256 => Group) public groups;
-    uint256 public totalGroups;
-
-    event GroupCreated(uint256 groupId, address admin, string name, string description);
-    event UserJoinedGroup(uint256 groupId, address user);
-    event MessageAdded(uint256 groupId, address sender, string message);
-    //GROUP END
-
     //GREATING DI
     uint256 public _postID;
     uint256 public _userID;
@@ -101,21 +84,6 @@ contract SocialNetwork {
     modifier nonEmptyInput(string calldata _input) {
         require(keccak256(abi.encodePacked(_input)) != keccak256(abi.encodePacked("")), "ERROR: <Input cannot be empty>");
         _;
-    }
-
-   //GROUP MODIFIER
-    modifier onlyAdmin() {
-        require(msg.sender == admin, "Only admin can call this function");
-        _;
-    }
-
-    modifier onlyGroupMember(uint256 groupId) {
-        require(isGroupMember(groupId, msg.sender), "Only group members can call this function");
-        _;
-    }
-
-    constructor() {
-        admin = msg.sender;
     }
 
     // Create a new profile from a given username
@@ -296,7 +264,7 @@ contract SocialNetwork {
         }
     }
 
-    // Create a comment
+    // Write a comment
     function addComment(string calldata _comment, uint256 _postID) external {
         for (uint i = 0; i < addresses.length; i++) {
             for(uint j=0; j < posts[addresses[i]].length; j++) {
@@ -372,91 +340,4 @@ contract SocialNetwork {
         }
     }
 
-    //GROUP FUNCTION
-    function isGroupMember(uint256 groupId, address user) internal view returns (bool) {
-        Group storage group = groups[groupId];
-
-        for (uint256 i = 0; i < group.members.length; i++) {
-            if (group.members[i] == user) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    function createGroup(string memory groupName, string memory groupDescription) external onlyAdmin {
-        totalGroups++;
-        uint256 groupId = totalGroups;
-        groups[groupId].members.push(admin);
-        groups[groupId].name = groupName;
-        groups[groupId].description = groupDescription;
-        groups[groupId].groupID = groupId;
-
-        emit GroupCreated(groupId, admin, groupName, groupDescription);
-    }
-
-    function joinGroup(uint256 groupId) external {
-        
-
-        Group storage group = groups[groupId];
-        require(!isGroupMember(groupId, msg.sender), "User is already a member");
-
-        group.members.push(msg.sender);
-
-        emit UserJoinedGroup(groupId, msg.sender);
-    }
-
-    function sendGroupMessage(uint256 groupId, string memory message) external onlyGroupMember(groupId) {
-        
-        Group storage group = groups[groupId];
-        group.messages[block.number] = message;
-
-        emit MessageAdded(groupId, msg.sender, message);
-    }
-
-    function getAllGroups() external view returns (uint256[] memory) {
-        uint256[] memory groupIds = new uint256[](totalGroups);
-
-        for (uint256 i = 0; i < totalGroups; i++) {
-            groupIds[i] = i + 1;
-        }
-
-        return groupIds;
-    }
-
-    function getGroupMessages(uint256 groupId) external view onlyGroupMember(groupId) returns (string[] memory) {
-        
-
-        Group storage group = groups[groupId];
-        uint256 messageCount = block.number;
-
-        string[] memory messages = new string[](messageCount);
-
-        for (uint256 i = 0; i < messageCount; i++) {
-            messages[i] = group.messages[i];
-        }
-
-        return messages;
-    }
-
-    function getGroupDetails(uint256 groupId) external view returns (
-        address[] memory members,
-        string memory name,
-        string memory description,
-        uint256 groupID
-    ) {
-        Group storage group = groups[groupId];
-        return (group.members, group.name, group.description, group.groupID);
-    }
-
-     function transferEther() external payable {
-        require(msg.value > 0, "Amount should be greater than 0");
-        
-        // Transfer Ether to the specified address
-        (bool success, ) = admin.call{value: msg.value}("");
-        require(success, "Transfer failed");
-    }
-
 }
-
