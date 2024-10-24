@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  BiHomeAlt,
-  BiSolidVideo,
   BiUser,
-  BiShoppingBag,
 } from "react-icons/bi";
 import { MdOutlineNotificationsNone } from "react-icons/md";
-import { BsSearch, BsCameraVideo } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
-import { PiChatsCircleFill } from "react-icons/pi";
+import { BsSearch } from "react-icons/bs";
+import { FiMenu } from "react-icons/fi";
 import Image from "next/image";
 
 // Utility function
@@ -128,25 +124,14 @@ const HeaderTop = ({
     <a onClick={() => functionName()}>
       <Image
         src="/images/logo.png"
-        height={500}
-        width={500}
+        height={60}
+        width={60}
         alt="user"
         className="h-12 w-fit"
       />
-      <span className="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">
+      <span className="d-inline-block fredoka-font ls-3 fw-400 text-current font-md logo-text mb-0">
         Echofly
       </span>
-    </a>
-    <a
-      onClick={() =>
-        openSideChat ? setOpenSideChat(false) : setOpenSideChat(true)
-      }
-      className="mob-menu ms-auto me-2 chat-active-btn"
-    >
-      <IconComponent icon={<PiChatsCircleFill />} />
-    </a>
-    <a onClick={() => setActiveComponent("Video")} className="mob-menu me-2">
-      <IconComponent icon={<BsCameraVideo />} />
     </a>
     <button
       onClick={() =>
@@ -165,7 +150,7 @@ const HeaderSearch = ({ searchItem, setSearchItem }) => (
       </i>
       <input
         type="text"
-        placeholder="Start typing to search.."
+        placeholder="Search"
         className="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg"
         onChange={(e) => setSearchItem(e.target.value)}
         value={searchItem}
@@ -240,26 +225,18 @@ const HeaderTheme = ({
   setBackgroundTheme,
 }) => (
   <>
-    <a
-      onClick={() =>
-        openSideChat ? setOpenSideChat(false) : setOpenSideChat(true)
-      }
-      className="p-2 text-center ms-3 menu-icon chat-active-btn"
-    >
-      <IconComponent icon={<PiChatsCircleFill />} />
-    </a>
     <div className="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
       <span onClick={() => (openTheme ? setOpenTheme(false) : setOpenTheme(true))}>
         <IconComponent
-          icon={<FiSettings />}
-          styleClass="animation-spin d-inline-block"
+          icon={<FiMenu />}
+          styleClass="d-inline-block"
         />
       </span>
       <div className={`dropdown-menu-settings switchcolor-wrap ${openTheme ? "active" : ""}`}>
-        <h4 className="fw-700 font-sm mb-4">Settings</h4>
+        <h4 className="fw-700 font-sm mb-4">Additional Settings</h4>
         <ThemeComponent
           target="toggle-menu-color"
-          title="Header Background"
+          title="Sidebar Background"
           handleClick={() =>
             backgroundTheme
               ? setBackgroundTheme(false)
@@ -268,7 +245,7 @@ const HeaderTheme = ({
         />
         <ThemeComponent
           target="toggle-menu"
-          title="Menu Position"
+          title="Indent Sidebar"
           handleClick={() =>
             menuPostion ? setMenuPostion(false) : setMenuPostion(true)
           }

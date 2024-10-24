@@ -8,12 +8,12 @@ import toast from "react-hot-toast";
 import { getBalance, CALLING_CONTRACT, parseErrorMsg } from "../utils/utils";
 import {
   PINATA_API_KEY,
-  PINATA_SECRECT_KEY,
+  PINATA_SECRET_KEY,
   checkIfWalletConnected,
   connectWallet,
 } from "./constants";
 
-export const SOCAIL_MEDIA_Context = React.createContext();
+export const SOCIAL_MEDIA_Context = React.createContext();
 
 export const SOCAIL_MEDIA_Provider = ({ children }) => {
   const SOCIAL_MEDIA_DAPP = "TBCoders";
@@ -609,10 +609,10 @@ export const SOCAIL_MEDIA_Provider = ({ children }) => {
   }, [userAddress, count]);
 
   return (
-    <SOCAIL_MEDIA_Context.Provider
+    <SOCIAL_MEDIA_Context.Provider
       value={{
         PINATA_API_KEY,
-        PINATA_SECRECT_KEY,
+        PINATA_SECRET_KEY,
         INITAIL_CONTRACT,
         CREATE_ACCOUNT,
         CREATE_POST,
@@ -656,6 +656,6 @@ export const SOCAIL_MEDIA_Provider = ({ children }) => {
       }}
     >
       {children}
-    </SOCAIL_MEDIA_Context.Provider>
+    </SOCIAL_MEDIA_Context.Provider>
   );
 };

@@ -19,13 +19,13 @@ const UserProfile = ({
   setCommentPostID,
   setAllPostComments,
 }) => {
-  const displyPosts = [];
+  const displayPosts = [];
 
   AppUserPost.map((item) => {
     if (item.author == "0x0000000000000000000000000000000000000000") {
       console.log("delete iTem");
     } else {
-      displyPosts.push(item);
+      displayPosts.push(item);
     }
   });
 
@@ -41,7 +41,7 @@ const UserProfile = ({
 
             <div className="col-xl-8 col-xxl-9 col-lg-8">
               <MainCreatePost setOpenCreatePost={setOpenCreatePost} />
-              {displyPosts.reverse().map((post, index) => (
+              {displayPosts.reverse().map((post, index) => (
                 <>
                   {post.postType == "Text" ? (
                     <MainTextPost

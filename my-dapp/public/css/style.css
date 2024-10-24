@@ -12545,6 +12545,10 @@ strong {
   width: 30px;
 }
 
+.nav-header .header-search {
+  margin-left: 2em;
+}
+
 @media (max-width: 991.98px) {
   .nav-header .nav-menu {
     display: inline-block;
@@ -12558,7 +12562,7 @@ strong {
 }
 
 .nav-header .header-search .form-group.icon-input i {
-  top: 14px;
+  top: 6px;
 }
 
 @media (max-width: 991.98px) {
@@ -16349,11 +16353,6 @@ select.sort {
 
 .hover-card:hover .card-image img {
   transform: scale(1.1);
-}
-
-.animation-spin {
-  -webkit-animation: fa-spin 2s infinite linear;
-  animation: fa-spin 2s infinite linear;
 }
 
 @-webkit-keyframes fa-spin {

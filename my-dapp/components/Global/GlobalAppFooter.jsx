@@ -1,5 +1,5 @@
 import React from "react";
-import { BiHomeAlt, BiSolidVideo, BiUser, BiShoppingBag } from "react-icons/bi";
+import { BiHomeAlt, BiUser, BiShoppingBag } from "react-icons/bi";
 
 const GlobalAppFooter = ({ setActiveComponent }) => {
   return (
@@ -18,11 +18,6 @@ const GlobalAppFooter = ({ setActiveComponent }) => {
       >
         <i className="">
           <BiUser />
-        </i>
-      </a>
-      <a onClick={() => setActiveComponent("Video")} className="nav-content-bttn">
-        <i className="">
-          <BiSolidVideo />
         </i>
       </a>
       <a

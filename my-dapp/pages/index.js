@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 //INTERNAL IMPORT
 import {
   Header,
   SideBar,
-  RightChat,
   MainBody,
   GlobalChatModal,
   GlobalAppHeader,
@@ -17,18 +15,17 @@ import {
   User,
   Message,
   YourFriends,
-  YourMedia,
-  YourVideo,
+  YourPhotos,
+  YourVideos,
   YourText,
   SinglePost,
   EditPost,
   GlobalCommentModal,
   Loader,
 } from "../components/index";
-import { GroupChat } from "../components/Global/RightChat/index";
 import { CreatePost } from "../components/Global/MainBody/index";
 ///INTERNAL IMPORT
-import { SOCAIL_MEDIA_Context } from "../context/context";
+import { SOCIAL_MEDIA_Context } from "../context/context";
 
 const index = () => {
   //CONTEXT DATA
@@ -44,10 +41,6 @@ const index = () => {
     FOLLOW_USER,
     UNFOLLOW_USER,
     READ_MESSAGE,
-    CREATE_GROUP,
-    JOIN_GROUP,
-    SEND_GROUP_MESSAGE,
-    GET_GROUP_MESSAGE,
     GET_SINGLE_POST,
     DELETE_POST,
     connected,
@@ -69,7 +62,7 @@ const index = () => {
     openComment,
     setOpenComment,
     count,
-  } = useContext(SOCAIL_MEDIA_Context);
+  } = useContext(SOCIAL_MEDIA_Context);
 
   //ROUTER
   const router = useRouter();
@@ -101,10 +94,6 @@ const index = () => {
   const [sendUser, setSendUser] = useState("");
   const [sendAddress, setSendAddress] = useState("");
   const [openChatModel, setOpenChatModel] = useState(false);
-  const [openGroupChatModel, setOpenGroupChatModel] = useState(false);
-  const [groupChatName, setGroupChatName] = useState();
-  const [groupDescription, setGroupDescription] = useState();
-  const [groupChatID, setGroupChatID] = useState();
 
   //NEW LOCAL STATE
   const [allPostFilter, setAllPostFilter] = useState(AllAppPost);
@@ -141,7 +130,7 @@ const index = () => {
           connectWallet={connectWallet}
         />
       ) : (
-        <div className={`color-theme-blue mont-font ${theme ? "theme-dark" : ""} `}>
+        <div className={`color-theme-darkorchid mont-font ${theme ? "theme-dark" : ""} `}>
           <div className="main-wrapper">
             {/* TOP NAVIGATION */}
             <Header
@@ -162,7 +151,6 @@ const index = () => {
               setOpenSideChat={setOpenSideChat}
               intrestedUsers={userFollowers}
               setActiveComponent={setActiveComponent}
-              functionName={CREATE_GROUP}
               onHandleSearch={onHandleSearch}
               onClearSearch={onClearSearch}
             />
@@ -207,7 +195,7 @@ const index = () => {
                 setCommentPostID={setCommentPostID}
                 setAllPostComments={setAllPostComments}
               />
-            ) : activeComponent == "Message" ? (
+            ) : activeComponent == "Messages" ? (
               <Message
                 intrestedUsers={userFollowers}
                 setSendUser={setSendUser}
@@ -225,16 +213,16 @@ const index = () => {
                 handleFunction={() => {}}
                 intrestedUsers={userFollowers}
               />
-            ) : activeComponent == "Media" ? (
-              <YourMedia
+            ) : activeComponent == "Photos" ? (
+              <YourPhotos
                 AllAppPost={AllAppPost}
                 LIKE_POST={LIKE_POST}
                 setOpenComment={setOpenComment}
                 setCommentPostID={setCommentPostID}
                 setAllPostComments={setAllPostComments}
               />
-            ) : activeComponent == "Video" ? (
-              <YourVideo
+            ) : activeComponent == "Videos" ? (
+              <YourVideos
                 DELETE_POST={DELETE_POST}
                 AllAppPost={AllAppPost}
                 LIKE_POST={LIKE_POST}
@@ -242,8 +230,6 @@ const index = () => {
                 setCommentPostID={setCommentPostID}
                 setAllPostComments={setAllPostComments}
               />
-            ) : activeComponent == "Setting" ? (
-              <YourText userAddress={userAddress} />
             ) : postType == "details" ? (
               <SinglePost
                 GET_SINGLE_POST={GET_SINGLE_POST}
@@ -273,20 +259,6 @@ const index = () => {
               />
             )}
 
-            <RightChat
-              openTheme={openTheme}
-              openSideChat={openSideChat}
-              setGroupChatName={setGroupChatName}
-              setGroupChatID={setGroupChatID}
-              setGroupDescription={setGroupDescription}
-              setOpenGroupChatModel={setOpenGroupChatModel}
-              setSendUser={setSendUser}
-              setSendAddress={setSendAddress}
-              setOpenChatModel={setOpenChatModel}
-              userFollowing={userFollowers}
-              intrestedUsers={userFollowing}
-            />
-
             <GlobalAppFooter setActiveComponent={setActiveComponent} />
             <GlobalAppHeader
               setOpenSideChat={setOpenSideChat}
@@ -303,23 +275,6 @@ const index = () => {
               openChatModel={openChatModel}
               setOpenChatModel={setOpenChatModel}
               SEND_MESSAGE={SEND_MESSAGE}
-              loader={loader}
-              count={count}
-            />
-          ) : (
-            ""
-          )}
-
-          {openGroupChatModel ? (
-            <GroupChat
-              groupChatName={groupChatName}
-              groupDescription={groupDescription}
-              groupChatID={groupChatID}
-              userAddress={userAddress}
-              openGroupChatModel={openGroupChatModel}
-              setOpenGroupChatModel={setOpenGroupChatModel}
-              GET_GROUP_MESSAGE={GET_GROUP_MESSAGE}
-              SEND_GROUP_MESSAGE={SEND_GROUP_MESSAGE}
               loader={loader}
               count={count}
             />

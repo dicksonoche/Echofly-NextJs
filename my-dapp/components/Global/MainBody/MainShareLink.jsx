@@ -2,13 +2,14 @@ import React from "react";
 import { BsBookmark } from "react-icons/bs";
 import { BiErrorCircle, BiError, BiSolidLockAlt } from "react-icons/bi";
 import { FaExpandArrowsAlt } from "react-icons/fa";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const MainShareLink = ({ DELETE_POST, postID, author, userAddress }) => {
   const creatorAction = [
     {
       name: "Edit Post",
       info: "Click to edit this post",
-      icon: <BsBookmark />,
+      icon: <AiOutlineEdit />,
       link: `?postEdit=${postID}&type=edit`,
     },
     // {

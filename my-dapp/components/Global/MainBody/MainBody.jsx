@@ -29,13 +29,13 @@ const MainBody = ({
   setCommentPostID,
   setAllPostComments,
 }) => {
-  const displyPosts = [];
+  const displayPosts = [];
 
   AllAppPost.map((item) => {
     if (item.author == "0x0000000000000000000000000000000000000000") {
       return;
     } else {
-      displyPosts.push(item);
+      displayPosts.push(item);
     }
   });
   return (
@@ -55,7 +55,7 @@ const MainBody = ({
                 <MainStory CREATE_ACCOUNT={CREATE_ACCOUNT} />
                 <MainCreatePost setOpenCreatePost={setOpenCreatePost} />
                 {/* //POST SECTION  1*/}
-                {displyPosts
+                {displayPosts
                   .reverse()
                   .map((post, index) => (
                     <>
@@ -94,7 +94,7 @@ const MainBody = ({
                   ))
                   .slice(0, 1)}
                 {/* //POST SECTION  2*/}
-                {displyPosts
+                {displayPosts
                   .map((post, index) => (
                     <>
                       {post.postType == "Text" ? (
@@ -135,7 +135,7 @@ const MainBody = ({
                   FOLLOW_USER={FOLLOW_USER}
                   AppUsers={AppUsers}
                 />
-                {displyPosts
+                {displayPosts
                   .map((post, index) => (
                     <>
                       {post.postType == "Text" ? (

@@ -5,25 +5,14 @@ import axios from "axios";
 import socialNetwork from "./SocialNetwork.json";
 
 export const CONTRACT_ABI = socialNetwork.abi;
-export const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+export const CONTRACT_ADDRESS = "0x3396Be3Eb80f86509bDfEA23Ca4707acAad55c13";
 
 //PINATA KEYS
 export const PINATA_API_KEY = "049ef711b8169f4e9d0a";
-export const PINATA_SECRECT_KEY = "03f96d22c69436baecaa3a03dde0d4ed09bbe205b9c105a080f11b5a5fc7f8f6";
+export const PINATA_SECRET_KEY = "03f96d22c69436baecaa3a03dde0d4ed09bbe205b9c105a080f11b5a5fc7f8f6";
 
 //NETWORK
 const networks = {
-  polygon_amoy: {
-    chainId: `0x${Number(80002).toString(16)}`,
-    chainName: "Polygon Amoy",
-    nativeCurrency: {
-      name: "MATIC",
-      symbol: "MATIC",
-      decimals: 18,
-    },
-    rpcUrls: ["https://rpc-amoy.polygon.technology/"],
-    blockExplorerUrls: ["https://www.oklink.com/amoy"],
-  },
   polygon: {
     chainId: `0x${Number(137).toString(16)}`,
     chainName: "Polygon Mainnet",
@@ -109,7 +98,7 @@ const changeNetwork = async ({ networkName }) => {
 };
 
 export const handleNetworkSwitch = async () => {
-  const networkName = "localhost";
+  const networkName = "optimism_sepolia";
   await changeNetwork({ networkName });
 };
 

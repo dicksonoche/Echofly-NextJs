@@ -1,48 +1,34 @@
 import React from "react";
-import Link from "next/link";
 import {
-  BiHomeAlt,
   BiSolidVideo,
   BiUser,
-  BiShoppingBag,
   BiImage,
 } from "react-icons/bi";
 import { LiaCertificateSolid } from "react-icons/lia";
-import { TbWorld } from "react-icons/tb";
-import { GrLocation } from "react-icons/gr";
-import { FiYoutube } from "react-icons/fi";
-import { FiSettings } from "react-icons/fi";
-import { PiChatsCircleFill } from "react-icons/pi";
 import {
   MdOutlineMail,
-  MdOutlineScreenshotMonitor,
-  MdShareLocation,
-  MdAnalytics,
-  MdOutlineToken,
+  MdOutlineVerifiedUser,
+  MdOutlineViewTimeline,
 } from "react-icons/md";
-import { Bs0Circle, BsAirplane } from "react-icons/bs";
 import { GiShadowFollower } from "react-icons/gi";
 import { SlUserFollowing } from "react-icons/sl";
-import { shortenAddress } from "../../utils/utils";
 
 const SideBar = ({
   setActiveComponent,
-  message,
   backgroundTheme,
   menuPostion,
   navbarActive,
   pageType,
-  userAddress,
   userAccount,
 }) => {
   const sideBarMenu = [
     {
       name: "Timeline",
-      icon: <MdOutlineScreenshotMonitor />,
+      icon: <MdOutlineViewTimeline />,
     },
     {
       name: "Users",
-      icon: <LiaCertificateSolid />,
+      icon: <MdOutlineVerifiedUser />,
     },
     {
       name: "Profile",
@@ -52,7 +38,7 @@ const SideBar = ({
 
   const morePageMenu = [
     {
-      name: "Message",
+      name: "Messages",
       icon: <MdOutlineMail />,
     },
     {
@@ -67,16 +53,12 @@ const SideBar = ({
 
   const accountPage = [
     {
-      name: "Media",
+      name: "Photos",
       icon: <BiImage />,
     },
     {
-      name: "Video",
+      name: "Videos",
       icon: <BiSolidVideo />,
-    },
-    {
-      name: "Setting",
-      icon: <MdOutlineToken />,
     },
   ];
 
@@ -93,7 +75,6 @@ const SideBar = ({
           <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2 mt-2">
             <div className="nav-caption fw-600 font-xssss text-grey-500">
               <span> {userAccount?.name} </span>
-              Feeds
             </div>
             <ul className="mb-1 top-content">
               {sideBarMenu.map((menu, index) => (
@@ -117,7 +98,7 @@ const SideBar = ({
 
           <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1 mb-2">
             <div className="nav-caption fw-600 font-xssss text-grey-500">
-              <span>Account </span>Overview
+              <span>Account Activity</span>
             </div>
             <ul className="mb-3">
               {morePageMenu.map((menu, index) => (
@@ -129,11 +110,6 @@ const SideBar = ({
                   >
                     <i className="font-xl text-current  me-3">{menu.icon}</i>
                     <span>{menu.name}</span>
-                    {index == 0 && (
-                      <span className="circle-count bg-warning mt-1">
-                        {message}
-                      </span>
-                    )}
                   </a>
                 </li>
               ))}
@@ -142,7 +118,7 @@ const SideBar = ({
 
           <div className="nav-wrap bg-white bg-transparent-card rounded-xxl shadow-xss pt-3 pb-1">
             <div className="nav-caption fw-600 font-xssss text-grey-500">
-              <span></span> Post Types
+              <span>Explore Media</span>
             </div>
             <ul className="mb-1">
               <li className="logo d-none d-xl-block d-lg-block"></li>

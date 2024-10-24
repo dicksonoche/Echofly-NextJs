@@ -1,7 +1,6 @@
 import Header from "./Global/Header/Header";
 import Footer from "./Global/Footer";
 import SideBar from "./Global/SideBar";
-import RightChat from "./Global/RightChat/RightChat";
 import GlobalChatModal from "./Global/GlobalChatModal";
 import GlobalAppHeader from "./Global/GlobalAppHeader";
 import GlobalAppFooter from "./Global/GlobalAppFooter";
@@ -18,8 +17,8 @@ import AccountFriend from "./Global/Account/AcountFriend";
 import Message from "./Global/Account/Message";
 import YourFriends from "./Global/Account/YourFriends";
 import YourProduct from "./Global/Account/YourProduct";
-import YourMedia from "./Global/Account/YourMedia";
-import YourVideo from "./Global/Account/YourVideo";
+import YourPhotos from "./Global/Account/YourPhotos";
+import YourVideos from "./Global/Account/YourVideos";
 import YourText from "./Global/Account/YourText";
 
 //USER PROFILE
@@ -39,7 +38,6 @@ export {
   Header,
   Footer,
   SideBar,
-  RightChat,
   GlobalChatModal,
   GlobalAppHeader,
   GlobalAppFooter,
@@ -55,8 +53,8 @@ export {
   Message,
   YourFriends,
   YourProduct,
-  YourMedia,
-  YourVideo,
+  YourPhotos,
+  YourVideos,
   YourText,
   SinglePost,
   EditPost,

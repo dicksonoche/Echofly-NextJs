@@ -13,6 +13,7 @@ import {
   AiOutlineVideoCameraAdd,
   AiOutlineCamera,
   AiOutlineFileText,
+  AiOutlineLink,
 } from "react-icons/ai";
 import { HiPhotograph } from "react-icons/hi";
 import { BsThreeDots } from "react-icons/bs";
@@ -23,16 +24,12 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 
 //INTERNAL IMPRT
 import { MainShareLink, Upload, BtnLoader } from "./index";
-import { SOCAIL_MEDIA_Context } from "../../../context/context";
+import { SOCIAL_MEDIA_Context } from "../../../context/context";
 
 const postType = [
   {
-    type: "Video",
-    icon: <AiOutlineVideoCameraAdd />,
-  },
-  {
     type: "Image",
-    icon: <HiPhotograph />,
+    icon: <AiOutlineLink />,
   },
   {
     type: "Text",
@@ -42,8 +39,8 @@ const postType = [
 
 const CreatePost = ({ setOpenCreatePost, CREATE_POST }) => {
   //CONTEXT DATA
-  const { PINATA_API_KEY, PINATA_SECRECT_KEY, setLoader, loader } =
-    useContext(SOCAIL_MEDIA_Context);
+  const { PINATA_API_KEY, PINATA_SECRET_KEY, setLoader, loader } =
+    useContext(SOCIAL_MEDIA_Context);
 
   //NOTIFICATION
   const notifySuccess = (msg) => toast.success(msg, { duration: 2000 });
@@ -90,7 +87,7 @@ const CreatePost = ({ setOpenCreatePost, CREATE_POST }) => {
           maxBodyLength: "Infinity",
           headers: {
             pinata_api_key: PINATA_API_KEY,
-            pinata_secret_api_key: PINATA_SECRECT_KEY,
+            pinata_secret_api_key: PINATA_SECRET_KEY,
             "Content-Type": "multipart/form-data",
           },
         });
@@ -125,44 +122,18 @@ const CreatePost = ({ setOpenCreatePost, CREATE_POST }) => {
       <div className="middle-wrap">
         <div className="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
           <div className="card-body p-lg-5 p-4 w-100 border-0 ">
-            <div className="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-3 mb-3">
-              <div className="card-body p-0">
-                <a
-                  onClick={() => setOpenCreatePost(false)}
-                  className="font-xssss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"
-                >
-                  <i className="btn-round-sm font-xs text-primary  me-2 bg-greylight">
-                    <AiOutlineClose />
-                  </i>
-                  Create Post
-                </a>
-              </div>
-
-              <div className="card-body d-flex p-0 mt-0">
-                {postType.map((type, index) => (
-                  <a
-                    onClick={() => setForm({ ...form, type: type.type })}
-                    className="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"
-                  >
-                    <i
-                      className={`font-md ${
-                        type.type == "Video"
-                          ? "text-danger"
-                          : type.type == "Image"
-                          ? "text-success"
-                          : "text-warning"
-                      }   me-2`}
-                    >
-                      {type.icon}
-                    </i>
-                    <span className="d-none-xs"> {type.type}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
             <form action="#">
               <div className="row">
+                <div className="col-lg-12 mb-3">
+                  <textarea
+                    onChange={(e) => handleFormFieldChange("description", e)}
+                    className="form-control mb-0 p-3 h100 bg-greylight lh-16"
+                    rows="5"
+                    placeholder="What's happening?"
+                    spellCheck="false"
+                  ></textarea>
+                </div>
+
                 {!fileURL && form.type != "Text" && (
                   <div className="col-lg-12 mb-3">
                     <div className="card mt-3 border-0">
@@ -203,24 +174,13 @@ const CreatePost = ({ setOpenCreatePost, CREATE_POST }) => {
                   ""
                 )}
 
-                <div className="col-lg-12 mb-3">
-                  <label className="mont-font fw-600 font-xsss">Description</label>
-                  <textarea
-                    onChange={(e) => handleFormFieldChange("description", e)}
-                    className="form-control mb-0 p-3 h100 bg-greylight lh-16"
-                    rows="5"
-                    placeholder="What's happening?"
-                    spellCheck="false"
-                  ></textarea>
-                </div>
-
                 <div className="col-lg-12">
                   {uploadLoader ? (
                     <BtnLoader />
                   ) : (
                     <a
                       onClick={() => _calling_CreatePost()}
-                      className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block"
+                      className="bg-current float-right text-center text-white font-xsss fw-500 p-2 w150 rounded-pill d-inline-block"
                     >
                       Post
                     </a>
@@ -228,6 +188,30 @@ const CreatePost = ({ setOpenCreatePost, CREATE_POST }) => {
                 </div>
               </div>
             </form>
+            <div className="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-3 mb-3">
+              <div className="card-body d-flex p-0 mt-0">
+                {postType.map((type, index) => (
+                  <a
+                    onClick={() => setForm({ ...form, type: type.type })}
+                    className="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"
+                  >
+                    <i
+                      className={`font-md me-2`}
+                    >
+                      {type.icon}
+                    </i>
+                  </a>
+                ))}
+                <a
+                  onClick={() => setOpenCreatePost(false)}
+                  className="font-xssss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"
+                >
+                  <i className="btn-round-sm font-xs text-primary  me-2 bg-greylight">
+                    <AiOutlineClose />
+                  </i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

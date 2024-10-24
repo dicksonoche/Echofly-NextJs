@@ -22,7 +22,7 @@ const register = ({
   });
 
   return (
-    <div className="color-theme-blue">
+    <div className="color-theme-darkorchid">
       <div className="main-wrap">
         <div className="row">
           <div
