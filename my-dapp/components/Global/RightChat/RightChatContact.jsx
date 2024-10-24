@@ -1,4 +1,5 @@
 import React from "react";
+import { BiUser } from "react-icons/bi";
 
 const RightChatContact = ({
   userFollowing,
@@ -35,11 +36,9 @@ const RightChatContact = ({
             className="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center"
           >
             <figure className="avatar float-left mb-0 me-2">
-              <img
-                src="images/user.png"
-                alt="image"
-                className="w35 rounded-circle"
-              />
+              <i className="btn-round-md font-xl text-white bg-black">
+                <BiUser />
+              </i>
             </figure>
             <h3 className="fw-700 mb-0 mt-0">
               <a

@@ -1,16 +1,11 @@
 import React from "react";
+import { BiUser } from "react-icons/bi";
 
 const TopProfile = ({ AppUsers, FOLLOW_USER, shortenAddress, icon }) => {
   return (
     <div className="card w-100 shadow-xss rounded-xxl border-0 p-0">
       <div className="card-body d-flex align-items-center p-4 mb-0">
         <h4 className="fw-700 mb-0 font-xssss text-grey-900">Top Profile</h4>
-        <a
-          href="default-member.html"
-          className="fw-600 ms-auto font-xssss text-primary"
-        >
-          See all
-        </a>
       </div>
 
       {AppUsers.reverse()
@@ -21,11 +16,9 @@ const TopProfile = ({ AppUsers, FOLLOW_USER, shortenAddress, icon }) => {
               style={{ marginBottom: "0 !important" }}
             >
               <figure className="avatar me-2 mb-0">
-                <img
-                  src="images/user.png"
-                  alt="image"
-                  className="shadow-sm rounded-circle w45"
-                />
+                <i className="btn-round-md font-xl text-white bg-black">
+                  <BiUser />
+                </i>
               </figure>
               <h4 className="fw-700 text-grey-900 font-xssss mt-2">
                 {user.name}

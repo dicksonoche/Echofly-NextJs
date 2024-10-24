@@ -3,7 +3,7 @@ import { BiHomeAlt, BiSolidVideo, BiUser, BiShoppingBag } from "react-icons/bi";
 
 const GlobalAppFooter = ({ setActiveComponent }) => {
   return (
-    <div className="app-footer border-0 shadow-lg bg-primary-gradiant">
+    <div className="app-footer border-0 shadow-lg bg-primary-gradient">
       <a
         onClick={() => setActiveComponent("Timeline")}
         className="nav-content-bttn nav-center"
@@ -13,20 +13,11 @@ const GlobalAppFooter = ({ setActiveComponent }) => {
         </i>
       </a>
       <a
-        onClick={() => setActiveComponent("Top User")}
+        onClick={() => setActiveComponent("Users")}
         className="nav-content-bttn"
       >
         <i className="">
           <BiUser />
-        </i>
-      </a>
-      <a
-        onClick={() => setActiveComponent("Memberships")}
-        className="nav-content-bttn"
-        data-tab="chats"
-      >
-        <i className="">
-          <BiShoppingBag />
         </i>
       </a>
       <a onClick={() => setActiveComponent("Video")} className="nav-content-bttn">
@@ -35,7 +26,7 @@ const GlobalAppFooter = ({ setActiveComponent }) => {
         </i>
       </a>
       <a
-        onClick={() => setActiveComponent("Author Profile")}
+        onClick={() => setActiveComponent("Profile")}
         className="nav-content-bttn"
       >
         <img

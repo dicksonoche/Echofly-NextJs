@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "components/Global/Header/Header.jsx", "components/Global/Header/HeaderTop.jsx", "components/Global/Header/Header.jsx"  ],
   "exclude": [
     "node_modules"
   ]

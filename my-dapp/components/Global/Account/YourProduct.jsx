@@ -1,7 +1,5 @@
 import React from "react";
 
-import NFTs from "../../../Ads/nftAds.json";
-
 const YourProduct = () => {
   return (
     <div className="main-content bg-white right-chat-active">
@@ -11,7 +9,7 @@ const YourProduct = () => {
             <div className="col-xl-12 col-xxl-12 col-lg-12">
               <div className="row">
                 <div className="col-lg-12">
-                  <div className="card p-md-5 p-4 bg-primary-gradiant rounded-3 shadow-xss bg-pattern border-0 overflow-hidden">
+                  <div className="card p-md-5 p-4 bg-primary-gradient rounded-3 shadow-xss bg-pattern border-0 overflow-hidden">
                     <div className="bg-pattern-div"></div>
                     <h2 className="display2-size display2-md-size fw-700 text-white mb-0 mt-0">
                       Popular NFT Collaction
@@ -21,36 +19,6 @@ const YourProduct = () => {
                     </h2>
                   </div>
                 </div>
-
-                {NFTs.map((nft, index) => (
-                  <div key={nft.productId} className="col-lg-4 col-md-6">
-                    <div className="card w-100 border-0 mt-4">
-                      <div className="card-image w-100 p-0 text-center bg-greylight rounded-3 mb-2">
-                        <a href={nft.Link} target="_blank" rel="noreferrer">
-                          <img
-                            src={nft.brand}
-                            alt="product-image"
-                            className="w-100 mt-0 mb-0 "
-                          />
-                        </a>
-                      </div>
-                      <div className="card-body w-100 p-0 text-center">
-                        <h2 className="mt-2 mb-1">
-                          <a
-                            href={nft.Link}
-                            target="_blank"
-                            className="text-black fw-700 font-xsss lh-26" rel="noreferrer"
-                          >
-                            {nft.name}
-                          </a>
-                        </h2>
-                        <h6 className="font-xsss fw-600 text-grey-500 ls-2">
-                          {nft.price}
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

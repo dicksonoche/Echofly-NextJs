@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
-import { BiSolidFilterAlt } from "react-icons/bi";
+import { BiSolidFilterAlt, BiUser } from "react-icons/bi";
 
 //INTERNAL IMPORT
 import { shortenAddress } from "../../../utils/utils";
@@ -56,7 +56,7 @@ const Members = ({ AppUsers, FOLLOW_USER }) => {
               <div className="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
                 <div className="card-body d-flex align-items-center p-0">
                   <h2 className="fw-700 mb-0 mt-0 font-md text-grey-900">
-                    Top Users
+                    Unfollowed Users
                   </h2>
                   <div className="search-form-2 ms-auto">
                     <i className=" font-xss">
@@ -87,14 +87,14 @@ const Members = ({ AppUsers, FOLLOW_USER }) => {
                     <div className="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
                       <div className="card-body d-block w-100 p-4 text-center">
                         <figure className="avatar ms-auto me-auto mb-0 position-relative w90 z-index-1">
-                          <img
-                            src="images/user.png"
-                            alt="image"
-                            className="float-right p-1 bg-white rounded-circle w-100"
-                          />
+                          <i className="btn-round-md font-xl text-white bg-black">
+                            <BiUser />
+                          </i>
                         </figure>
                         <div className="clearfix"></div>
-                        <h4 className="fw-700 font-xss mt-3 mb-0">{user.name}</h4>
+                        <h4 className="fw-700 font-xss mt-3 mb-0">
+                          {user.name}
+                        </h4>
                         <p className="fw-500 font-xssss text-grey-500 mt-0 mb-3">
                           {shortenAddress(user.owner)}
                         </p>
@@ -115,7 +115,7 @@ const Members = ({ AppUsers, FOLLOW_USER }) => {
                         </ul>
                         <a
                           onClick={() => FOLLOW_USER(user.owner)}
-                          className="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white"
+                          className="mt-4 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white"
                         >
                           FOLLOW
                         </a>

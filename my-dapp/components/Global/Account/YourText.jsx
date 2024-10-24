@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 
 //INTERNAL IMPRT
 import { shortenAddress } from "../../../utils/utils";
+import { BiUser } from "react-icons/bi";
 
 //COMPONENT
 const InputComponent = ({
@@ -92,11 +93,9 @@ const YourText = ({ userAddress }) => {
                 <div class="row justify-content-center">
                   <div class="col-lg-4 text-center">
                     <figure class="avatar ms-auto me-auto mb-0 mt-2 w100">
-                      <img
-                        src="images/you.png"
-                        alt="image"
-                        class="shadow-sm rounded-3 w-100"
-                      />
+                      <i className="btn-round-md font-xl text-white bg-black">
+                        <BiUser />
+                      </i>
                     </figure>
                     <h2 class="fw-700 font-sm text-grey-900 mt-3">
                       {displayUser?.firstName} {displayUser?.lastName}

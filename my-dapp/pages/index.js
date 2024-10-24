@@ -5,25 +5,18 @@ import { useRouter } from "next/router";
 //INTERNAL IMPORT
 import {
   Header,
-  Footer,
   SideBar,
   RightChat,
   MainBody,
   GlobalChatModal,
   GlobalAppHeader,
   GlobalAppFooter,
-  GlobalStory,
   Register,
   Members,
-  Story,
-  Shop,
-  AccountComponent,
   UserProfile,
   User,
-  AccountFriend,
   Message,
   YourFriends,
-  YourProduct,
   YourMedia,
   YourVideo,
   YourText,
@@ -66,7 +59,6 @@ const index = () => {
     userAccount,
     userFollowers,
     userFollowing,
-    memberGroups,
     loader,
     openCreatePost,
     setOpenCreatePost,
@@ -201,13 +193,9 @@ const index = () => {
                 setCommentPostID={setCommentPostID}
                 setAllPostComments={setAllPostComments}
               />
-            ) : activeComponent == "TopUser" ? (
+            ) : activeComponent == "Users" ? (
               <Members AppUsers={AppUsers} FOLLOW_USER={FOLLOW_USER} />
-            ) : activeComponent == "ProductAds" ? (
-              <Story />
-            ) : activeComponent == "Memberships" ? (
-              <User memberGroups={memberGroups} JOIN_GROUP={JOIN_GROUP} />
-            ) : activeComponent == "AuthorProfile" ? (
+            ) : activeComponent == "Profile" ? (
               <UserProfile
                 setOpenCreatePost={setOpenCreatePost}
                 userAccount={userAccount}
@@ -237,10 +225,6 @@ const index = () => {
                 handleFunction={() => {}}
                 intrestedUsers={userFollowers}
               />
-            ) : activeComponent == "ERC20Tokens" ? (
-              <Shop />
-            ) : activeComponent == "NFTS" ? (
-              <YourProduct />
             ) : activeComponent == "Media" ? (
               <YourMedia
                 AllAppPost={AllAppPost}
@@ -292,7 +276,6 @@ const index = () => {
             <RightChat
               openTheme={openTheme}
               openSideChat={openSideChat}
-              memberGroups={memberGroups}
               setGroupChatName={setGroupChatName}
               setGroupChatID={setGroupChatID}
               setGroupDescription={setGroupDescription}

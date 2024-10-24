@@ -14,8 +14,6 @@ import MainSocialShare from "./MainSocialShare";
 import CreatePost from "./CreatePost";
 import Upload from "./Upload";
 import Dappusers from "./Dappusers";
-import EventsAds from "./EventsAds";
-import ProductAds from "./ProductAds";
 import TopProfile from "./TopProfile";
 import BtnLoader from "./BtnLoader";
 
@@ -35,8 +33,6 @@ export {
   MainSocialShare,
   CreatePost,
   Upload,
-  EventsAds,
-  ProductAds,
   TopProfile,
   Dappusers,
   BtnLoader,

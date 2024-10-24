@@ -20,7 +20,7 @@ const GlobalStory = () => {
             <i className="ti-close text-grey-900 font-xssss"></i>
           </button>
           <div className="modal-body p-0">
-            <div className="card w-100 border-0 rounded-3 overflow-hidden bg-gradiant-bottom bg-gradiant-top">
+            <div className="card w-100 border-0 rounded-3 overflow-hidden bg-gradient-bottom bg-gradient-top">
               <div className="owl-carousel owl-theme dot-style3 story-slider owl-dot-nav nav-none">
                 <div className="item">
                   <img src="images/story-5.jpg" alt="image" />
@@ -43,7 +43,7 @@ const GlobalStory = () => {
                 value="Write Comments"
               />
               <span
-                className="feather-send text-white font-md text-white position-absolute"
+                className="feather-send font-md text-white position-absolute"
                 style={{ bottom: "35px", right: "30px" }}
               ></span>
             </div>

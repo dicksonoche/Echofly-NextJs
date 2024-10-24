@@ -209,7 +209,7 @@ const NotificationItem = ({ notification, index }) => (
       index == 3 ? "mb-0" : "mb-3"
     }`}
   >
-    <Image
+    <img
       src={`images/user-${index + 1}.png`}
       alt="user"
       className="w40 position-absolute left-0"

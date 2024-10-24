@@ -1,8 +1,6 @@
 import React from "react";
-import { BiLike } from "react-icons/bi";
 import { AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
 
 //INTERNAL IMPRT
 import { MainShareLink, MainSocialShare } from "./index";
@@ -51,10 +49,7 @@ const MainMultiPost = () => {
           href="#"
           className="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"
         >
-          <i className=" text-white bg-primary-gradiant me-1 btn-round-xs font-xss">
-            <BiLike />
-          </i>
-          <i className=" text-white bg-red-gradiant me-2 btn-round-xs font-xss">
+          <i className=" text-black bg-transparent me-2 btn-round-xs font-xs">
             <AiOutlineHeart />
           </i>
           2.8K Like
@@ -91,7 +86,7 @@ const MainMultiPost = () => {
           href="#"
           className="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"
         >
-          <i className=" text-dark text-grey-900 btn-round-sm font-lg">
+          <i className=" text-dark text-grey-900 btn-round-sm font-xs">
             <FaRegComment />
           </i>
           <span className="d-none-xss">22 Comment</span>

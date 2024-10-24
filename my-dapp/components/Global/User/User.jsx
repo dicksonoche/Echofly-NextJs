@@ -45,7 +45,7 @@ const User = ({ memberGroups, JOIN_GROUP }) => {
                         style={{ backgroundImage: `url(images/bb-16.png)` }}
                       ></div>
                       <div className="card-body d-block w-100 pl-10 pe-4 pb-4 pt-0 text-left position-relative">
-                        <figure
+                        {/*<figure
                           className="avatar position-absolute w75 z-index-1"
                           style={{ top: "-40px", left: "15px" }}
                         >
@@ -54,7 +54,7 @@ const User = ({ memberGroups, JOIN_GROUP }) => {
                             alt="image"
                             className="float-right p-1 bg-white rounded-circle w-100"
                           />
-                        </figure>
+                        </figure>*/}
                         <div className="clearfix"></div>
                         <h4 className="fw-700 font-xsss mt-3 mb-1">{group.name}</h4>
                         <p className="fw-500 font-xsssss text-grey-500 mt-0 mb-3">

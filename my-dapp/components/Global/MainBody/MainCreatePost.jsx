@@ -9,6 +9,7 @@ import { BsThreeDots } from "react-icons/bs";
 
 //INTERNAL IMPRT
 import { MainShareLink } from "./index";
+import { BiUser } from "react-icons/bi";
 
 const MainCreatePost = ({ setOpenCreatePost }) => {
   return (
@@ -23,11 +24,9 @@ const MainCreatePost = ({ setOpenCreatePost }) => {
       </div>
       <div className="card-body p-0 mt-3 position-relative">
         <figure className="avatar position-absolute ms-2 mt-1 top-5">
-          <img
-            src="images/you.png"
-            alt="image"
-            className="shadow-sm rounded-circle w30"
-          />
+          <i className="btn-round-md font-xl text-white bg-black">
+            <BiUser />
+          </i>
         </figure>
         <textarea
           onClick={() => setOpenCreatePost(true)}

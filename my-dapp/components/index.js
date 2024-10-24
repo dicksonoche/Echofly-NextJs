@@ -30,8 +30,7 @@ import Members from "./Global/Members/Members";
 
 //STORY
 import Story from "./Global/Story/Story";
-//SHOP
-import Shop from "./Global/Shop/Shop";
+
 //SinglePost
 import SinglePost from "./Global/SinglePost/SinglePost";
 import EditPost from "./Global/SinglePost/PostEdit";
@@ -51,7 +50,6 @@ export {
   UserProfile,
   Members,
   Story,
-  Shop,
   User,
   AccountFriend,
   Message,

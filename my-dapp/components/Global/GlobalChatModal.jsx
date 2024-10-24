@@ -54,24 +54,24 @@ const ChatModal = ({
             <>
               {message.sender.toLowerCase() == userAddress.toLowerCase() ? (
                 <>
-                  <div className="message">
+                  <div className="message text-right">
                     <div className="message-content font-xssss lh-24 fw-500">
                       {message.message}
                     </div>
                   </div>
-                  <div className="date-break font-xsssss lh-24 fw-500 text-grey-500 mt-2 mb-2">
+                  <div className="date-break float-right font-xsssss lh-24 fw-500 text-grey-500 mt-2 mb-2">
                     {new Date(message.timestamp * 1000).toDateString()}
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="message self text-right mt-2">
+                  <div className="message self text-left mt-2">
                     <div className="message-content font-xssss lh-24 fw-500">
                       {message.message}
                     </div>
                   </div>
 
-                  <div className="font-xsssss lh-24 fw-500 text-grey-500   float-right">
+                  <div className="font-xsssss lh-24 fw-500 text-grey-500 float-left">
                     {new Date(message.timestamp * 1000).toDateString()}
                   </div>
                   <div className="clearfix"></div>

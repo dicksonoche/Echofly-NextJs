@@ -4,7 +4,6 @@ import { BsBoxArrowUpRight } from "react-icons/bs";
 
 //INTERNAL IMPORT
 import { shortenAddress } from "../../../utils/utils";
-import Product from "../../../Ads/product.json";
 import {
   TopProfile,
   Dappusers,

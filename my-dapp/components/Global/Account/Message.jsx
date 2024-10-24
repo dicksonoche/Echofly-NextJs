@@ -4,6 +4,7 @@ import { AiOutlineStar } from "react-icons/ai";
 
 //INTERNAL IMPORT
 import { shortenAddress } from "../../../utils/utils";
+import { BiUser } from "react-icons/bi";
 
 const Message = ({
   intrestedUsers,
@@ -64,11 +65,9 @@ const Message = ({
                         </div>
                         <div className="email-user">
                           <span className="btn-round-xss ms-0 bg-success me-2"></span>
-                          <img
-                            src="images/user.png"
-                            alt="user"
-                            className="w35 me-2 rounded-circle"
-                          />
+                          <i className="btn-round-md font-xl text-white bg-black">
+                            <BiUser />
+                          </i>
                           <h6 className="font-xssss text-grey-900 text-grey-900 mb-0 mt-0 fw-700">
                             {user.name}
                           </h6>
@@ -80,7 +79,7 @@ const Message = ({
                           {shortenAddress(user.owner)}
                         </div>
                         <div className="email-text text-grey-500 fw-600 font-xssss">
-                          Ckeck all the latest message form your firend{" "}
+                          Ckeck all the latest message form your friend{" "}
                           {user.name}
                         </div>
                         <span className="email-file">

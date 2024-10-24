@@ -24,7 +24,7 @@ const YourFriends = ({ intrestedUsers, handleFunction, type }) => {
               <div className="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
                 <div className="card-body d-flex align-items-center p-0">
                   <h2 className="fw-700 mb-0 mt-0 font-md text-grey-900">
-                    Top Users
+                    Users
                   </h2>
                   <div className="search-form-2 ms-auto">
                     <i className=" font-xss">
@@ -79,7 +79,7 @@ const YourFriends = ({ intrestedUsers, handleFunction, type }) => {
                             <h4 className="fw-700 font-sm">
                               {follower.followerCount}
                               <span className="font-xsssss fw-500 mt-1 text-grey-500 d-block">
-                                Follower
+                                Followers
                               </span>
                             </h4>
                           </li>

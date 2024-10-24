@@ -86,8 +86,7 @@ const MainFourPost = () => {
           href="#"
           className="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"
         >
-          <i className="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i>
-          <i className="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i>
+          <i className="feather-heart text-white bg-red-gradient me-2 btn-round-xs font-xss"></i>
           2.8K Like
         </a>
         <div className="emoji-wrap">

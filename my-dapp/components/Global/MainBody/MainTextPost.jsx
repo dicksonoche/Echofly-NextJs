@@ -1,5 +1,5 @@
 import React from "react";
-import { BiLike } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 import { AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
@@ -29,13 +29,9 @@ const MainTextPost = ({
     <div className="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-0 new_margin">
       <div className="card-body p-0 d-flex">
         <figure className="avatar me-3 m-0">
-          <img
-            src={`images/${
-              post.author.toLowerCase() == userAddress ? "you" : "user"
-            }.png`}
-            alt="image"
-            className="shadow-sm rounded-circle w45"
-          />
+          <i className="btn-round-md font-xl text-white bg-black">
+            <BiUser />
+          </i>
         </figure>
         <h4 className="fw-700 text-grey-900 font-xssss mt-1">
           {shortenAddress(post.author)}
@@ -72,10 +68,7 @@ const MainTextPost = ({
           onClick={() => LIKE_POST(post.postID)}
           className="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"
         >
-          <i className=" text-white bg-primary-gradiant me-1 btn-round-xs font-xss">
-            <BiLike />
-          </i>
-          <i className=" text-white bg-red-gradiant me-2 btn-round-xs font-xss">
+          <i className=" text-black bg-transparent me-2 btn-round-xs font-xs">
             <AiOutlineHeart />
           </i>
           {post.likes} Like
@@ -88,7 +81,7 @@ const MainTextPost = ({
           )}
           className="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"
         >
-          <i className=" text-dark text-grey-900 btn-round-sm font-lg">
+          <i className=" text-dark text-grey-900 btn-round-sm font-xs">
             <FaRegComment />
           </i>
           <span className="d-none-xss">{post.comments.length} Comment</span>

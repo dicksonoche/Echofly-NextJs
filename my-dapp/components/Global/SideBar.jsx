@@ -41,19 +41,11 @@ const SideBar = ({
       icon: <MdOutlineScreenshotMonitor />,
     },
     {
-      name: "TopUser",
+      name: "Users",
       icon: <LiaCertificateSolid />,
     },
     {
-      name: "ProductAds",
-      icon: <TbWorld />,
-    },
-    {
-      name: "Memberships",
-      icon: <BiUser />,
-    },
-    {
-      name: "AuthorProfile",
+      name: "Profile",
       icon: <BiUser />,
     },
   ];
@@ -70,14 +62,6 @@ const SideBar = ({
     {
       name: "Followers",
       icon: <SlUserFollowing />,
-    },
-    {
-      name: "ERC20Tokens",
-      icon: <Bs0Circle />,
-    },
-    {
-      name: "NFTS",
-      icon: <BsAirplane />,
     },
   ];
 
@@ -120,19 +104,7 @@ const SideBar = ({
                     className="nav-content-bttn open-font"
                   >
                     <i
-                      className={` btn-round-md ${
-                        index == 0
-                          ? "bg-blue-gradiant"
-                          : index == 1
-                          ? "bg-red-gradiant"
-                          : index == 2
-                          ? "bg-gold-gradiant"
-                          : index == 3
-                          ? "bg-mini-gradiant"
-                          : index == 4
-                          ? "bg-primary-gradiant"
-                          : ""
-                      }  me-3`}
+                      className={` btn-round-md text-current bg-transparent me-3`}
                     >
                       {menu.icon}
                     </i>

@@ -43,7 +43,7 @@ const Upload = ({ getRootProps, getInputProps, fileURL }) => {
           <textarea
             className="form-control mb-0 p-3 h100 bg-greylight lh-16"
             rows="5"
-            placeholder="Write your message..."
+            placeholder="What's happening?"
             spellCheck="false"
           ></textarea>
         </div>
@@ -53,7 +53,7 @@ const Upload = ({ getRootProps, getInputProps, fileURL }) => {
             href="#"
             className="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block"
           >
-            Create
+            Post
           </a>
         </div>
       </div>

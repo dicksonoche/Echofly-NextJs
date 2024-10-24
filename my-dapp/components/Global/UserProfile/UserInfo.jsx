@@ -5,7 +5,6 @@ import { TfiWorld } from "react-icons/tfi";
 import { FaRegUser } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 
-import Events from "../../../Ads/eventsAds.json";
 
 const UserInfo = ({ AppUserPost }) => {
   const [displayUser, setDisplayUser] = useState({});
@@ -103,33 +102,6 @@ const UserInfo = ({ AppUserPost }) => {
             See all
           </a>
         </div>
-
-        {Events.map((event, index) => (
-          <div className="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
-            <div
-              className={`${
-                index == 0
-                  ? "bg-success"
-                  : index == 1
-                  ? "bg-warning"
-                  : "bg-primary"
-              } me-2 p-3 rounded-xxl`}
-            >
-              <h4 className="fw-700 font-lg ls-3 lh-1 text-white mb-0">
-                <span className="ls-1 d-block font-xsss text-white fw-600">
-                  {event.month}
-                </span>
-                {event.day}
-              </h4>
-            </div>
-            <h4 className="fw-700 text-grey-900 font-xssss mt-2">
-              {event.title}
-              <span className="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500">
-                {event.discription}
-              </span>
-            </h4>
-          </div>
-        ))}
       </div>
     </div>
   );

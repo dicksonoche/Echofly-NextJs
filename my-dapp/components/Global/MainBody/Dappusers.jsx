@@ -1,16 +1,11 @@
 import React from "react";
+import { BiUser } from "react-icons/bi";
 
 const Dappusers = ({ FOLLOW_USER, AppUsers, shortenAddress }) => {
   return (
     <div className="card w-100 shadow-xss rounded-xxl border-0 mb-3">
       <div className="card-body d-flex align-items-center p-4">
         <h4 className="fw-700 mb-0 font-xssss text-grey-900">Who to follow</h4>
-        <a
-          href="default-member.html"
-          className="fw-600 ms-auto font-xssss text-primary"
-        >
-          See all
-        </a>
       </div>
       {AppUsers.map((user, index) => (
         <>
@@ -20,11 +15,9 @@ const Dappusers = ({ FOLLOW_USER, AppUsers, shortenAddress }) => {
             } `}
           >
             <figure className="avatar me-3">
-              <img
-                src={`images/user.png`}
-                alt="image"
-                className="shadow-sm rounded-circle w45"
-              />
+              <i className="btn-round-md font-xl text-white bg-black">
+                <BiUser />
+              </i>
             </figure>
             <h4 className="fw-700 text-grey-900 font-xssss mt-1">
               {user.name}
@@ -36,15 +29,9 @@ const Dappusers = ({ FOLLOW_USER, AppUsers, shortenAddress }) => {
           <div className="card-body d-flex align-items-center pt-0 ps-4 pe-4 pb-4">
             <a
               onClick={() => FOLLOW_USER(user.owner)}
-              className="p-2 lh-20 w100 bg-primary-gradiant me-2 text-white text-center font-xssss fw-600 ls-1 rounded-xl"
+              className="p-2 lh-20 w100 bg-primary-gradient me-2 text-white text-center font-xssss fw-600 ls-1 rounded-xl"
             >
               Follow
-            </a>
-            <a
-              href="#"
-              className="p-2 lh-20 w100 bg-grey text-grey-800 text-center font-xssss fw-600 ls-1 rounded-xl"
-            >
-              Verified
             </a>
           </div>
         </>
