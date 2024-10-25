@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import { BiSolidFilterAlt } from "react-icons/bi";
 
 //INTERN IMPORT
-import { shortenAddress } from "../../../utils/utils";
+import { shortenAddress } from "../../../Utils/utils";
 
 const User = ({ memberGroups, JOIN_GROUP }) => {
   return (

@@ -3,7 +3,7 @@ import { MdOutlineAttachment } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
 
 //INTERNAL IMPORT
-import { shortenAddress } from "../../../utils/utils";
+import { shortenAddress } from "../../../Utils/utils";
 import { BiUser } from "react-icons/bi";
 
 const Message = ({

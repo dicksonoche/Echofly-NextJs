@@ -6,9 +6,9 @@ import { BsThreeDots } from "react-icons/bs";
 import { MdOutlineContentCopy } from "react-icons/md";
 import toast from "react-hot-toast";
 
-//INTERNAL IMPRT
+//INTERNAL IMPORT
 import { MainShareLink, MainSocialShare } from "./index";
-import { shortenAddress } from "../../../utils/utils";
+import { shortenAddress } from "../../../Utils/utils";
 
 const MainImagePost = ({
   post,

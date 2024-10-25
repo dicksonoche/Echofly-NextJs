@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 
 ///INTERNAL IMPORT
-import { getBalance, CALLING_CONTRACT, parseErrorMsg } from "../utils/utils";
+import { getBalance, CALLING_CONTRACT, parseErrorMsg } from "../Utils/utils";
 import {
   PINATA_API_KEY,
   PINATA_SECRET_KEY,

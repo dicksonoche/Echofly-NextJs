@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import { BiSolidFilterAlt, BiUser } from "react-icons/bi";
 
 //INTERNAL IMPORT
-import { shortenAddress } from "../../../utils/utils";
+import { shortenAddress } from "../../../Utils/utils";
 
 const Members = ({ AppUsers, FOLLOW_USER }) => {
   //NEW LOCAL STATE
