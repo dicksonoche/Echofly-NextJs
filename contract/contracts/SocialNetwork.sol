@@ -1,9 +1,9 @@
-// // SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
 contract SocialNetwork {
 
-    address public admin;
+    address public owner;
 
     address[] internal addresses;
     mapping(string => address) internal names;
@@ -12,7 +12,7 @@ contract SocialNetwork {
     mapping(address => mapping(address => Profile)) internal following;
     mapping(address => Post[]) internal posts;
 
-    //GREATING DI
+    //CREATING ID
     uint256 public _postID;
     uint256 public _userID;
 
@@ -62,6 +62,24 @@ contract SocialNetwork {
         string[] comments;
     }
 
+    // Events
+    event ProfileCreated(address indexed user, string name, uint256 userID);
+    event Followed(address indexed follower, address indexed following);
+    event Unfollowed(address indexed follower, address indexed following);
+    event PostCreated(address indexed author, uint256 postID, string postType);
+    event PostDeleted(address indexed author, uint256 postID);
+    event PostLiked(address indexed liker, uint256 postID);
+    event PostUnliked(address indexed unliker, uint256 postID);
+    event CommentAdded(address indexed commenter, uint256 postID, string comment);
+    event MessageSent(address indexed sender, address indexed recipient, string message);
+    event PostEdited(address indexed editor, uint256 postID, string newDescription);
+    event EtherWithdrawn(address indexed owner, uint256 amount, uint256 timestamp);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "ERROR: Only owner can perform this action");
+        _;
+    }
+
     // Check if message sender has a created profile
     modifier senderHasProfile() {
         require(profiles[msg.sender].owner != address(0x0), "ERROR: <Must create a profile to perform this action>");
@@ -84,6 +102,10 @@ contract SocialNetwork {
     modifier nonEmptyInput(string calldata _input) {
         require(keccak256(abi.encodePacked(_input)) != keccak256(abi.encodePacked("")), "ERROR: <Input cannot be empty>");
         _;
+    }
+
+    constructor() {
+        owner = msg.sender;
     }
 
     // Create a new profile from a given username
@@ -115,6 +137,7 @@ contract SocialNetwork {
         addresses.push(msg.sender);
 
         getAllUsers.push(AllUserStruck(msg.sender, _name, block.timestamp, userID, 0,0,0));
+        emit ProfileCreated(msg.sender, _name, userID);
     }
 
     // Follow a new profile
@@ -133,11 +156,11 @@ contract SocialNetwork {
         profiles[_address].followerCount++;
         profiles[msg.sender].followingCount++;
 
-
+        emit Followed(msg.sender, _address);
     }
 
     // Unfollow a profile
-    // This deletion operation has a time complexity of O(N), is there a better way to do this?
+    // This deletion operation has a time complexity of O(N).
     function unfollow(address _address) external senderHasProfile profileExists(_address) notSelf(_address) {
         require(following[msg.sender][_address].owner != address(0x0), "ERROR: <You already do not follow this profile>");
 
@@ -162,6 +185,8 @@ contract SocialNetwork {
                 break;
             }
         }
+
+        emit Unfollowed(msg.sender, _address);
     }
 
 
@@ -188,6 +213,8 @@ contract SocialNetwork {
 
         // Increment "postCount" in Profile object
         profiles[newPost.author].postCount++;
+
+        emit PostCreated(msg.sender, postID, _type);
     }
 
     // Returns all posts from a given address
@@ -239,6 +266,8 @@ contract SocialNetwork {
 
         delete posts[msg.sender][id];
         profiles[msg.sender].postCount--;
+
+        emit PostDeleted(msg.sender, id);
     }
 
     // like post
@@ -247,6 +276,7 @@ contract SocialNetwork {
             for(uint j=0; j < posts[addresses[i]].length; j++) {
                 if (posts[addresses[i]][j].postID == _postID) {
                     posts[addresses[i]][j].likes++;
+                    emit PostLiked(msg.sender, _postID);
                     break;
                 }
             }
@@ -258,6 +288,7 @@ contract SocialNetwork {
             for(uint j=0; j < posts[addresses[i]].length; j++) {
                 if (posts[addresses[i]][j].postID == _postID) {
                     posts[addresses[i]][j].likes--;
+                    emit PostUnliked(msg.sender, _postID);
                     break;
                 }
             }
@@ -270,6 +301,7 @@ contract SocialNetwork {
             for(uint j=0; j < posts[addresses[i]].length; j++) {
                 if (posts[addresses[i]][j].postID == _postID) {
                     posts[addresses[i]][j].comments.push(_comment);
+                    emit CommentAdded(msg.sender, _postID, _comment);
                     break;
                 }
             }
@@ -281,6 +313,8 @@ contract SocialNetwork {
         bytes32 chatCode = _getChatCode(msg.sender, friend_key);
         message memory newMsg = message(msg.sender, block.timestamp, _msg);
         allMessages[chatCode].push(newMsg);
+
+        emit MessageSent(msg.sender, friend_key, _msg);
     }
 
     //get chat code
@@ -307,11 +341,27 @@ contract SocialNetwork {
             for(uint j=0; j < posts[addresses[i]].length; j++) {
                 if (posts[addresses[i]][j].postID == _postID) {
                     posts[addresses[i]][j].postDescription = _description;
+                    emit PostEdited(msg.sender, _postID, _description);
                     break;
                 }
             }
         }
     }
+
+    // Function for the owner to withdraw ether
+    function withdrawEther() public onlyOwner {
+        uint256 balance = address(this).balance;
+        require(balance > 0, "ERROR: No Ether to withdraw");
+
+        (bool success, ) = owner.call{ value: balance }("");
+        require(success, "Failed to send Ether");
+
+        // Emit event to log the withdrawal
+        emit EtherWithdrawn(owner, balance, block.timestamp);
+    }
+
+    // Function to receive ether
+    receive() external payable {}
 
     // GET SINGLE POST
     function getSinglePost(uint256 _postID) external view returns(address,

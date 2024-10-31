@@ -3,7 +3,7 @@ import { AiOutlineArrowRight, AiOutlinePlus } from "react-icons/ai";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 
 //INTERNAL IMPORT
-import { shortenAddress } from "../../../Utils/utils";
+import { shortenAddress } from "../../../utils/utils";
 import {
   TopProfile,
   Dappusers,

@@ -23,6 +23,7 @@
     "web3modal": "^1.9.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
     "@babel/eslint-parser": "^7.25.8",
     "@types/node": "^20.14.13",
     "@types/react": "^18",

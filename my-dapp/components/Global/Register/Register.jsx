@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 
 import { Input } from "./index";
-import { shortenAddress } from "../../../Utils/utils";
+import { shortenAddress } from "../../../utils/utils";
 
 const register = ({
   CREATE_ACCOUNT,

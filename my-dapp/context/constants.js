@@ -5,7 +5,7 @@ import axios from "axios";
 import socialNetwork from "./SocialNetwork.json";
 
 export const CONTRACT_ABI = socialNetwork.abi;
-export const CONTRACT_ADDRESS = "0x3396Be3Eb80f86509bDfEA23Ca4707acAad55c13";
+export const CONTRACT_ADDRESS = "0xfe2ea5b1fF17f1c869f3DE596942Cf4a73D2E21d";
 
 //PINATA KEYS
 export const PINATA_API_KEY = "049ef711b8169f4e9d0a";

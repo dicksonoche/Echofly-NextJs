@@ -1,7 +1,7 @@
 import React from "react";
 
 //INTERNAL IMPORT
-import { shortenAddress } from "../../../Utils/utils";
+import { shortenAddress } from "../../../utils/utils";
 import { BiUser } from "react-icons/bi";
 
 const UserBanner = ({ userAccount }) => {

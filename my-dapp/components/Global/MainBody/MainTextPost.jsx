@@ -7,7 +7,7 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import toast from "react-hot-toast";
 //INTERNAL IMPORT
 import { MainShareLink, MainSocialShare } from "./index";
-import { shortenAddress } from "../../../Utils/utils";
+import { shortenAddress } from "../../../utils/utils";
 
 const MainTextPost = ({
   post,

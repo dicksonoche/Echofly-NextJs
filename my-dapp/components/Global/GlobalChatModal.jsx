@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillSendFill } from "react-icons/bs";
 
-import { shortenAddress } from "../../Utils/utils";
+import { shortenAddress } from "../../utils/utils";
 import { BtnLoader } from "./MainBody/index";
 
 const ChatModal = ({

@@ -2,7 +2,7 @@ import React from "react";
 import { BsSearch } from "react-icons/bs";
 import { BiSolidFilterAlt } from "react-icons/bi";
 
-import { shortenAddress } from "../../../Utils/utils";
+import { shortenAddress } from "../../../utils/utils";
 
 const YourFriends = ({ intrestedUsers, handleFunction, type }) => {
   const displyFollowing = [];

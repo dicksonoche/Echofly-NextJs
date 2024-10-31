@@ -8,7 +8,7 @@ import { FiMenu } from "react-icons/fi";
 import Image from "next/image";
 
 // Utility function
-import { shortenAddress } from "../../../Utils/utils";
+import { shortenAddress } from "../../../utils/utils";
 
 // Header component
 const Header = ({
