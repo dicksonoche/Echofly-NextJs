@@ -35,6 +35,13 @@ module.exports = {
         "634e09c8e44458a98ff5aeee556fcfdbffe7918e8d8121991ca970ec68f34b93",
       ],
     },
+    "base-mainnet": {
+      url: "https://mainnet.base.org/",
+      chainId: 8453,
+      accounts: [
+        "634e09c8e44458a98ff5aeee556fcfdbffe7918e8d8121991ca970ec68f34b93",
+      ],
+    },
     sepolia: {
       url:
         process.env.INFURA_PROJECT_URL ||

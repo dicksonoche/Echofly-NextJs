@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   AiOutlineClose,
   AiOutlineUserAdd,
-  AiOutlineMail,
   AiOutlinePhone,
   AiOutlineInfoCircle,
 } from "react-icons/ai";
@@ -18,7 +17,6 @@ const register = ({
 }) => {
   const [formInput, updateFormInput] = useState({
     name: "",
-    email: "",
   });
 
   return (
@@ -27,27 +25,22 @@ const register = ({
         <div className="row">
           <div
             className="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
-            style={{ backgroundImage: "url(images/login-bg-2.jpg)" }}
+            style={{ backgroundImage: "url(images/login-bg.jpg)" }}
           ></div>
           <div className="col-xl-7 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
             <div className="card shadow-none border-0 ms-auto me-auto login-card">
               <div className="card-body rounded-0 text-left">
-                <h2 className="fw-700 display1-size display2-md-size mb-4">
+                <h1 className="fw-800 display1-size display2-lg-size mb-2 text-center">Social Interaction dApp</h1>
+                <h3 className="fw-600 display1-size display2-sm-size mb-2">
                   Create your account
-                </h2>
+                </h3>
+                <p>Important: Reload page after connecting wallet</p>
                 <div>
                   <Input
                     Icon={<AiOutlineUserAdd />}
-                    placeholder={"Your name"}
+                    placeholder={"Name"}
                     handleClick={(e) =>
                       updateFormInput({ ...formInput, name: e.target.value })
-                    }
-                  />
-                  <Input
-                    Icon={<AiOutlineMail />}
-                    placeholder={"Email Address"}
-                    handleClick={(e) =>
-                      updateFormInput({ ...formInput, email: e.target.value })
                     }
                   />
                   <Input
