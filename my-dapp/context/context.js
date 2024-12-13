@@ -16,7 +16,7 @@ import {
 export const SOCIAL_MEDIA_Context = React.createContext();
 
 export const SOCAIL_MEDIA_Provider = ({ children }) => {
-  const SOCIAL_MEDIA_DAPP = "TBCoders";
+  const SOCIAL_MEDIA_DAPP = "Echofly";
   const [loader, setLoader] = useState(false);
   const [openCreatePost, setOpenCreatePost] = useState(false);
   const [activeComponent, setActiveComponent] = useState("Timeline");
@@ -340,7 +340,7 @@ export const SOCAIL_MEDIA_Provider = ({ children }) => {
 
       setCount(count + 1);
       setLoader(false);
-      notifySuccess("User follow successfully");
+      notifySuccess("User followed successfully");
     } catch (error) {
       setLoader(false);
       const errorMsg = parseErrorMsg(error);

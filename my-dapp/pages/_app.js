@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
           sizes="16x16"
           href="images/logo.png"
         />
-        <title>Social App- The Graph</title>
+        <title>Echofly- Social App</title>
       </Head>
       <SOCAIL_MEDIA_Provider>
         <Component {...pageProps} />

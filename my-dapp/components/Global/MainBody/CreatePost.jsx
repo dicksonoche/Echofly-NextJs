@@ -28,11 +28,11 @@ import { SOCIAL_MEDIA_Context } from "../../../context/context";
 
 const postType = [
   {
-    type: "Image",
+    type: "Image and Text",
     icon: <AiOutlineLink />,
   },
   {
-    type: "Text",
+    type: "Text only",
     icon: <AiOutlineFileText />,
   },
 ];
