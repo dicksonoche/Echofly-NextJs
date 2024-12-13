@@ -195,7 +195,7 @@ const YourText = ({ userAddress }) => {
                     }
                     placeholderOne={displayUser?.city}
                     placeholderTwo={displayUser?.postalcode}
-                    first={" Twon / City"}
+                    first={" Town / City"}
                     second={"Postalcode"}
                   />
                   <div class="row">

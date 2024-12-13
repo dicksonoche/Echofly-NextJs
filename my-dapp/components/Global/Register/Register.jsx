@@ -32,7 +32,7 @@ const register = ({
               <div className="card-body rounded-0 text-left">
                 <h1 className="fw-800 display1-size display2-lg-size mb-2 text-center">Social Interaction dApp</h1>
                 <h3 className="fw-600 display1-size display2-sm-size mb-2">
-                  Create your account
+                  Create your account!
                 </h3>
                 <p>Important: Reload page after connecting wallet</p>
                 <div>

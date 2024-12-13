@@ -193,7 +193,7 @@ const AccountComponent = () => {
                     <div className="col-lg-6 mb-3">
                       <div className="form-group">
                         <label className="mont-font fw-600 font-xsss">
-                          Twon / City
+                          Town / City
                         </label>
                         <input type="text" className="form-control" />
                       </div>

@@ -50,12 +50,12 @@ const networks = {
     chainId: `0x${Number(8453).toString(16)}`,
     chainName: "Base Mainnet",
     nativeCurrency: {
-      name: "ETH",
+      name: "Ethereum",
       symbol: "ETH",
       decimals: 18,
     },
     rpcUrls: ["https://mainnet.base.org/"],
-    blockExplorerUrls: ["https://bscscan.com"],
+    blockExplorerUrls: ["https://base.blockscout.com/"],
   },
   base_sepolia: {
     chainId: `0x${Number(84532).toString(16)}`,
@@ -66,7 +66,7 @@ const networks = {
       decimals: 18,
     },
     rpcUrls: ["https://sepolia.base.org"],
-    blockExplorerUrls: ["https://bscscan.com"],
+    blockExplorerUrls: ["https://sepolia-explorer.base.org"],
   },
   localhost: {
     chainId: `0x${Number(31337).toString(16)}`,

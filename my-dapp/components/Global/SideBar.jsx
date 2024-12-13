@@ -7,6 +7,7 @@ import {
 import { LiaCertificateSolid } from "react-icons/lia";
 import {
   MdOutlineMail,
+  MdOutlineToken,
   MdOutlineVerifiedUser,
   MdOutlineViewTimeline,
 } from "react-icons/md";
@@ -33,6 +34,10 @@ const SideBar = ({
     {
       name: "Profile",
       icon: <BiUser />,
+    },
+    {
+      name: "Edit Profile",
+      icon: <MdOutlineToken />,
     },
   ];
 

@@ -130,7 +130,9 @@ const index = () => {
           connectWallet={connectWallet}
         />
       ) : (
-        <div className={`color-theme-darkorchid mont-font ${theme ? "theme-dark" : ""} `}>
+        <div
+          className={`color-theme-darkorchid mont-font ${theme ? "theme-dark" : ""} `}
+        >
           <div className="main-wrapper">
             {/* TOP NAVIGATION */}
             <Header
@@ -230,6 +232,8 @@ const index = () => {
                 setCommentPostID={setCommentPostID}
                 setAllPostComments={setAllPostComments}
               />
+            ) : activeComponent == "Edit Profile" ? (
+              <YourText userAddress={userAddress} />
             ) : postType == "details" ? (
               <SinglePost
                 GET_SINGLE_POST={GET_SINGLE_POST}
